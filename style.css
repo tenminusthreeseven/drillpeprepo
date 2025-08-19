@@ -1,0 +1,45 @@
+* { box-sizing: border-box }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  min-height: 200vh;
+  transition: background-color 0.3s linear;
+  color: black;
+}
+
+p {
+  color: #ecf0f1;
+  font-size: 2em;
+  text-align: center;
+  
+}
+
+span {
+  clear: both;
+  font-size: .7em;
+  color: #bdc3c7;
+}
+
+a {
+  color: #c0392b;
+  text-decoration: none;
+}
+
+.slide {
+  
+  .inside {
+    display: table;
+    height: 100%;
+    width: 100%;
+    padding: 0 3em;
+    
+    p {
+      display: table-cell;
+      width: 100%;
+      clear: both;
+      vertical-align: middle; 
+      text-align: center; 
+    }
+  }
+}
