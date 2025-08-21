@@ -94,4 +94,10 @@ nav button.active {
 }
 .text-box{
   max-width: 600px;
+  margin: 50px;
+  padding: 20px 20px;
+  background: rgb(240, 240, 237);
+  text-decoration-color: #111;
+  border: 2px solid rgb(0, 255, 21);
+  border-radius: 80px;
 }
