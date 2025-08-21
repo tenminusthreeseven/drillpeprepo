@@ -1,6 +1,11 @@
 * { box-sizing: border-box }
 
 body {
+  margin:0;
+  height: 100vh;
+  background-color: white;
+  background-image: radial-gradient(black 1.1px,transparent 1px);
+  background-size: 20px 20px;
   margin: 0;
   font-family: system-ui, sans-serif;
   min-height: 200vh;
