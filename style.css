@@ -92,20 +92,42 @@ nav button.active {
   background: #00ffcc;
   box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
 }
-.text-box{
-  flex:1;
-  max-width: 400px;
-  max-height: 600px;
-  margin: 50px;
-  padding: 20px 20px;
-  background: rgb(240, 240, 237);
-  text-decoration-color: #111;
-  border: 2px solid rgb(0, 255, 21);
-  border-radius: 80px;
+.box-stack {
+  position: relative; /* container for absolute children */
+  width: 700px;
+  margin: 50px auto;
+  height: 600px; /* enough space to hold stacked boxes */
 }
-.box-container{
-  display:flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 50px;
+
+.text-box {
+  position: absolute;   /* needed for overlap */
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+  background: rgb(240, 240, 237);
+  color: black;
+  border: 2px solid rgb(0, 255, 21);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* First box */
+.text-box:nth-child(1) {
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+/* Second box overlaps first by 30% */
+.text-box:nth-child(2) {
+  left: 30%;   /* shift by 30% of its own width */
+  top: 0;
+  z-index: 2;
+}
+
+/* Third box overlaps second (optional) */
+.text-box:nth-child(3) {
+  left: 60%;   /* again 30% more */
+  top: 0;
+  z-index: 3;
 }

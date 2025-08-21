@@ -4,12 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DrillPep</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box }
 
-  
-  <link rel ="stylesheet" href="style.css">
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 20px 20px;
+      font-family: system-ui, sans-serif;
+      min-height: 200vh;
+      transition: background-color 0.3s linear;
+      color: white;
+    }
+
+    header {
+      position: relative;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+    }
+
+    /* Move nav buttons to top-right */
+    nav {
+      display: flex;
+      gap: 15px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    nav button {
+      cursor: pointer;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover {
+      color: #00ffcc;
+      background: #1a1a1a;
+      box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
+      transform: translateY(-3px);
+    }
+
+    nav button.active {
+      color: #111;
+      background: #00ffcc;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+    }
+
+    .box-stack {
+      position: relative;
+      width: 700px;
+      margin: 50px;
+    }
+
+    .text-box {
+      position: relative;
+      max-width: 400px;
+      max-height: 600px;
+      margin: 50px;
+      padding: 20px 20px;
+      background: rgb(240, 240, 237);
+      color: #111;
+      border: 2px solid rgb(0, 255, 21);
+      border-radius: 15px;
+    }
+
+    /* Overlapping boxes */
+    .text-box:nth-child(2) {
+      position: absolute;
+      left: 30%;
+      top: 20px;
+      z-index: 2;
+    }
+
+    .text-box:nth-child(3) {
+      position: absolute;
+      left: 60px;
+      top: 40px;
+      z-index: 3;
+    }
+
+    p {
+      color: #111;
+      font-size: 1.2em;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-
 
   <header>
     <h1>DrillPep</h1>
@@ -19,81 +113,36 @@
     </nav>
   </header>
 
-
   <main>
-    <div class="box-container">
-    <div class="text-box">
-      <p>
-        DrillPep is an innovative web platform designed to help users
-        effectively track and monitor their preparation progress for
-        government and other competitive exams. With DrillPep, anyone can
-        easily log their study activities, assess how much they have
-        completed, and identify areas that need more focus.
-      </p>
-    </div>
-    <div class="text-box">
-      <p>
+    <div class="box-stack">
+      <div class="text-box">
+        <p>
+          DrillPep is an innovative web platform designed to help users
+          effectively track and monitor their preparation progress for
+          government and other competitive exams. With DrillPep, anyone can
+          easily log their study activities, assess how much they have
+          completed, and identify areas that need more focus.
+        </p>
+      </div>
 
-      </p>
-    </div>
+      <div class="text-box">
+        <p>
+          The platform provides a clear, organized overview of your
+          preparation journey, empowering you to stay motivated and manage
+          your time efficiently. Whether you’re preparing for government
+          exams or other competitive tests, DrillPep is your go-to tool for
+          staying on top of your study goals and maximizing your success.
+        </p>
+      </div>
 
-    </div>
-    <div class="text-box">
-      <p>
-        The platform provides a clear, organized overview of your
-        preparation journey, empowering you to stay motivated and manage
-        your time efficiently. Whether you’re preparing for government
-        exams or other competitive tests, DrillPep is your go-to tool for
-        staying on top of your study goals and maximizing your success.
-      </p>
+      <div class="text-box">
+        <p>
+          This is a third overlapping box. You can use it for extra content,
+          notes, or highlights.
+        </p>
+      </div>
     </div>
   </main>
 
-  <main>
-    <div class="text-box2">
-      <h5>Find your exam</h5>
-    </div>
-  </div>
-    
-  </main>
-
-
-       <div class="main-wrapper">
-  
-  <div class="slide slide-one" data-background="#3498db">
-    <div class="inside">
-    <p>I Wanted to create a really simple pen</p>
-    </div>
-  </div>
-  <div class="slide slide-two" data-background="#27ae60">
-    <div class="inside">
-      <p>A pen that uses some awesome colors <br /><span>awesome <a href="http://flatuicolors.com/" target="_blank">like these</a></span></p>
-    </div>
-  </div>
-  <div class="slide slide-three" data-background="#e74c3c">
-    <div class="inside">
-      <p>And that made you scroll</p>
-    </div>
-  </div>
-  <div class="slide slide-four" data-background="#e67e22">
-    <div class="inside">
-      <p>Mission Accomplished</p>
-    </div>
-  </div>
-  <div class="slide slide-five" data-background="#9b59b6">
-    <div class="inside">
-      <p>Have an awesome day</p>
-    </div>
-  </div>
-  
-  <div class="slide slide-five" data-background="#34495e">
-    <div class="inside">
-      <p>This was built a long time ago so I made a better version <a href="https://codepen.io/Funsella/pen/3271d716c5c6b67c18af6f4ecf9295af/">better version</a> </p>
-    </div>
-  </div>
-  
-
-
-<script src="drills.js"></script>
 </body>
 </html>
