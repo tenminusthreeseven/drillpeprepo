@@ -3,14 +3,14 @@
 body {
   margin:0;
   height: 100vh;
-  background-color: white;
-  background-image: radial-gradient(black 1.1px,transparent 1px);
+  background-color: black;
+  background-image: radial-gradient(white 1px,transparent 1px);
   background-size: 20px 20px;
   margin: 0;
   font-family: system-ui, sans-serif;
   min-height: 200vh;
   transition: background-color 0.3s linear;
-  color: black;
+  color: white;
 }
 
 p {
@@ -47,4 +47,51 @@ a {
       text-align: center; 
     }
   }
+}
+header {
+  position: relative;
+  padding: 20px;
+  background: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+/* Move nav buttons to top-left */
+nav {
+  display: flex;
+  gap: 15px;
+  position: right;
+  top: 15px;
+  left: 15px;
+}
+
+/* Style buttons instead of <a> */
+nav button {
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  color: #00ffcc;
+  background: #1a1a1a;
+  box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
+  transform: translateY(-3px);
+}
+
+nav button.active {
+  color: #111;
+  background: #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+.text-box{
+  max-width: 600px;
 }
