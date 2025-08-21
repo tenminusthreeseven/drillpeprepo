@@ -5,110 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DrillPep</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    * { box-sizing: border-box }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: black;
-      background-image: radial-gradient(white 1px, transparent 1px);
-      background-size: 20px 20px;
-      font-family: system-ui, sans-serif;
-      min-height: 200vh;
-      transition: background-color 0.3s linear;
-      color: white;
-    }
-
-    header {
-      position: relative;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-    }
-
-    /* Move nav buttons to top-right */
-    nav {
-      display: flex;
-      gap: 15px;
-      position: absolute;
-      top: 15px;
-      right: 15px;
-    }
-
-    nav button {
-      cursor: pointer;
-      color: white;
-      font-size: 16px;
-      font-weight: 500;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-      transition: all 0.3s ease;
-    }
-
-    nav button:hover {
-      color: #00ffcc;
-      background: #1a1a1a;
-      box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
-      transform: translateY(-3px);
-    }
-
-    nav button.active {
-      color: #111;
-      background: #00ffcc;
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
-    }
-
-    .box-stack {
-      position: relative;
-      width: 700px;
-      margin: 50px;
-    }
-
-    .text-box {
-      position: relative;
-      max-width: 400px;
-      max-height: 600px;
-      margin: 50px;
-      padding: 20px 20px;
-      background: rgb(240, 240, 237);
-      color: #111;
-      border: 2px solid rgb(0, 255, 21);
-      border-radius: 15px;
-    }
-
-    /* Overlapping boxes */
-    .text-box:nth-child(2) {
-      position: absolute;
-      left: 30%;
-      top: 20px;
-      z-index: 2;
-    }
-
-    .text-box:nth-child(3) {
-      position: absolute;
-      left: 60px;
-      top: 40px;
-      z-index: 3;
-    }
-
-    p {
-      color: #111;
-      font-size: 1.2em;
-      text-align: left;
-    }
-  </style>
 </head>
 <body>
 
   <header>
     <h1>DrillPep</h1>
     <nav>
-      <button>Log In</button>
+      <button class="active">Log In</button>
       <button>Sign Up</button>
     </nav>
   </header>
@@ -137,12 +40,13 @@
 
       <div class="text-box">
         <p>
-          This is a third overlapping box. You can use it for extra content,
-          notes, or highlights.
+          Start exploring DrillPep today and make your preparation journey
+          smoother, smarter, and more effective than ever before!
         </p>
       </div>
     </div>
   </main>
 
+  <script src="drills.js"></script>
 </body>
 </html>

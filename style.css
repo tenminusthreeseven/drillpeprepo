@@ -1,133 +1,115 @@
-* { box-sizing: border-box }
-
 body {
-  margin:0;
-  height: 100vh;
-  background-color: black;
-  background-image: radial-gradient(white 1px,transparent 1px);
-  background-size: 20px 20px;
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  min-height: 200vh;
-  transition: background-color 0.3s linear;
-  color: white;
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: system-ui, sans-serif;
+    min-height: 200vh;
+    transition: background-color 0.3s linear;
+    color: white;
 }
-
+h1{
+    padding-bottom: 0px;
+}
+/* General text styles */
 p {
-  color: #ecf0f1;
-  font-size: 2em;
-  text-align: center;
-  
+    color: #2c3e50;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: justify;
 }
 
-span {
-  clear: both;
-  font-size: .7em;
-  color: #bdc3c7;
-}
-
-a {
-  color: #c0392b;
-  text-decoration: none;
-}
-
-.slide {
-  
-  .inside {
-    display: table;
-    height: 100%;
-    width: 100%;
-    padding: 0 3em;
-    
-    p {
-      display: table-cell;
-      width: 100%;
-      clear: both;
-      vertical-align: middle; 
-      text-align: center; 
-    }
-  }
-}
 header {
-  position: relative;
-  padding: 20px;
-  background: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
 }
 
-/* Move nav buttons to top-left */
+/* Navigation */
 nav {
-  display: flex;
-  gap: 15px;
-  position: right;
-  top: 15px;
-  left: 15px;
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
 
-/* Style buttons instead of <a> */
 nav button {
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-  transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    transition: all 0.3s ease;
 }
 
 nav button:hover {
-  color: #00ffcc;
-  background: #1a1a1a;
-  box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
-  transform: translateY(-3px);
+    color: #00ffcc;
+    background: #1a1a1a;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
+    transform: translateY(-3px);
 }
 
 nav button.active {
-  color: #111;
-  background: #00ffcc;
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
-}
-.box-stack {
-  position: relative; /* container for absolute children */
-  width: 700px;
-  margin: 50px auto;
-  height: 600px; /* enough space to hold stacked boxes */
+    color: #111;
+    background: #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
 }
 
+/* Box stack container */
+.box-stack {
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    margin-left: 80px;    /* keeps it left aligned but neat */
+    margin-top: 150px;    /* push down to center better */
+}
+
+/* Text boxes */
 .text-box {
-  position: absolute;   /* needed for overlap */
-  width: 400px;
-  height: 300px;
-  padding: 20px;
-  background: rgb(240, 240, 237);
-  color: black;
-  border: 2px solid rgb(0, 255, 21);
-  border-radius: 20px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    position: absolute;
+    width: 360px;
+    height: 480px;
+    background: #fdfdfd;
+    color: #2c3e50;
+    border: 2px solid #00ffcc;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(3px);
 }
 
 /* First box */
 .text-box:nth-child(1) {
-  left: 0;
-  top: 0;
-  z-index: 1;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
 }
 
-/* Second box overlaps first by 30% */
+/* Second box */
 .text-box:nth-child(2) {
-  left: 30%;   /* shift by 30% of its own width */
-  top: 0;
-  z-index: 2;
+    left: 230px;
+    top: 50px;
+    z-index: 2;
 }
 
-/* Third box overlaps second (optional) */
+/* Third box */
 .text-box:nth-child(3) {
-  left: 60%;   /* again 30% more */
-  top: 0;
-  z-index: 3;
+    left: 460px;
+    top: 100px;
+    z-index: 3;
+}
+
+/* Hover effect */
+.text-box:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 255, 204, 0.4);
+    z-index: 10;
 }
