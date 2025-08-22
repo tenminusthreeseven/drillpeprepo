@@ -14,25 +14,29 @@ h1{
 }
 /* General text styles */
 p {
-    color: #2c3e50;
+    color: #1a82e9;
     font-size: 1.1em;
     line-height: 1.6;
     text-align: justify;
 }
 
 header {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: transparent;
+
+    background-color: rgba(233, 196, 74, 0.4); /* full fat white bar */
+
 }
+
 
 /* Navigation */
 nav {
     display: flex;
     gap: 15px;
-    position: absolute;
+ 
+    position: flex;
     top: 15px;
     left: 15px;
 }
@@ -76,9 +80,9 @@ nav button.active {
     position: absolute;
     width: 360px;
     height: 480px;
-    background: #fdfdfd;
+    background: lab(83.92% -59.18 25.97);
     color: #2c3e50;
-    border: 2px solid #00ffcc;
+    border: 2px solid #000404;
     border-radius: 18px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     padding: 20px;
@@ -87,10 +91,13 @@ nav button.active {
 }
 
 /* First box */
+/* First box */
 .text-box:nth-child(1) {
     left: 0px;
     top: 0px;
     z-index: 1;
+    background: linear-gradient(135deg, #034f7f, #0a7902); /* soft pink-peach */
+    color: #2c2c2c;
 }
 
 /* Second box */
@@ -98,6 +105,8 @@ nav button.active {
     left: 230px;
     top: 50px;
     z-index: 2;
+    background: linear-gradient(135deg, #d8ff57, #600419); /* mint green + light lemon */
+    color: #1a1a1a;
 }
 
 /* Third box */
@@ -105,21 +114,28 @@ nav button.active {
     left: 460px;
     top: 100px;
     z-index: 3;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* pink → lavender → blue */
+    color: #1a1a1a;
 }
-/* Fourth box (Find your exams) */
+
+/* Fourth box (Exam box highlight) */
 .exam-box {
-    left: ;  /* move right of the 3rd box */
-    top: 740px;    /* slightly lower than 3rd */
+    top: 740px;
+    left: 80px;
     z-index: 4;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: ;
     min-width: 950px;
-    transition: ;
+    min-height: 200px;
+    background: linear-gradient(135deg, #84fab0, #8fd3f4); /* green-teal blend */
+    color: #111;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(132, 250, 176, 0.4);
+    font-size: 1.4em;
+    font-weight: 600;
 }
-
 
 /* Hover effect */
 .text-box:hover {
