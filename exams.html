@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Government Exams</title>
+  <link rel="stylesheet" href="exams.css">
+</head>
+<body>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="searchBox" placeholder="Search Exams...">
+  </div>
+
+  <!-- Exam Grid -->
+  <div class="exam-grid" id="examGrid">
+   
+
+    <!-- Central Exams -->
+    <div class="exam-box">UPSC Civil Services</div>
+    <div class="exam-box">SSC CGL</div>
+    <div class="exam-box">SSC CHSL</div>
+    <div class="exam-box">SSC MTS</div>
+    <div class="exam-box">Railway RRB NTPC</div>
+    <div class="exam-box">Railway Group D</div>
+    <div class="exam-box">Bank PO (IBPS, SBI)</div>
+    <div class="exam-box">Bank Clerk (IBPS, SBI)</div>
+    <div class="exam-box">RBI Grade B</div>
+    <div class="exam-box">RBI Assistant</div>
+    <div class="exam-box">LIC AAO</div>
+    <div class="exam-box">NABARD Grade A</div>
+    <div class="exam-box">CUET UG</div>
+    <div class="exam-box">CUET PG</div>
+    <div class="exam-box">NEET PG (MBBS PG)</div>
+    <div class="exam-box">GATE</div>
+    <div class="exam-box">CSIR NET</div>
+
+    <!-- Defence Exams -->
+    <div class="exam-box">NDA</div>
+    <div class="exam-box">CDS</div>
+    <div class="exam-box">AFCAT</div>
+    <div class="exam-box">CAPF (Assistant Commandant)</div>
+    <div class="exam-box">Indian Navy SSR/AA</div>
+    <div class="exam-box">Indian Air Force X & Y Group</div>
+    <div class="exam-box">Indian Army GD</div>
+
+    <!-- Teaching Exams -->
+    <div class="exam-box">CTET</div>
+    <div class="exam-box">UGC NET</div>
+    <div class="exam-box">TET (State Level)</div>
+    <div class="exam-box">KVS PRT/TGT/PGT</div>
+    <div class="exam-box">DSSSB Teacher</div>
+
+    <!-- Police Exams -->
+    <div class="exam-box">SSC GD Constable</div>
+    <div class="exam-box">Delhi Police Constable</div>
+    <div class="exam-box">UP Police SI</div>
+    <div class="exam-box">State SI Exams</div>
+    <div class="exam-box">Constable Exams</div>
+    <div class="exam-box">CBI Officer</div>
+    <div class="exam-box">IB ACIO</div>
+
+    <!-- State PSC Exams -->
+    <div class="exam-box">UPPSC</div>
+    <div class="exam-box">BPSC</div>
+    <div class="exam-box">RPSC</div>
+    <div class="exam-box">MPPSC</div>
+    <div class="exam-box">MPSC</div>
+    <div class="exam-box">TNPSC</div>
+    <div class="exam-box">KPSC</div>
+    <div class="exam-box">APPSC</div>
+    <div class="exam-box">TSPSC</div>
+    <div class="exam-box">WBPSC</div>
+    <div class="exam-box">HPPSC</div>
+    <div class="exam-box">JKPSC</div>
+    <div class="exam-box">Other State PSC Exams</div>
+
+    <!-- Other Important Exams -->
+    <div class="exam-box">Lekhpal</div>
+    <div class="exam-box">Sachiv</div>
+    <div class="exam-box">Forest Services Exam</div>
+    <div class="exam-box">Indian Economic Service</div>
+    <div class="exam-box">Indian Statistical Service</div>
+    <div class="exam-box">ISRO Recruitment</div>
+    <div class="exam-box">DRDO Recruitment</div>
+
+  
+
+  </div>
+
+  <!-- Script for Search -->
+  <script>
+    const searchBox = document.getElementById('searchBox');
+    const examGrid = document.getElementById('examGrid');
+    const examBoxes = examGrid.getElementsByClassName('exam-box');
+
+    searchBox.addEventListener('keyup', function() {
+      let filter = searchBox.value.toLowerCase();
+      for (let i = 0; i < examBoxes.length; i++) {
+        let txt = examBoxes[i].textContent || examBoxes[i].innerText;
+        examBoxes[i].style.display = txt.toLowerCase().includes(filter) ? "" : "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

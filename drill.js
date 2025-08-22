@@ -40,3 +40,4 @@ function updateBackground() {
     document.body.style.color = "white"; // dark bg → white text
   }
 }
+

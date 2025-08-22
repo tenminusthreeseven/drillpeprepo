@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Search bar */
+.search-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#searchBox {
+  width: 60%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+#searchBox:focus {
+  border-color: red;
+}
+
+/* Grid layout for exams */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Each exam box */
+.exam-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.exam-box:hover {
+  background: red;
+  color: white;
+  border-color: red;
+}
