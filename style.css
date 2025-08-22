@@ -106,6 +106,20 @@ nav button.active {
     top: 100px;
     z-index: 3;
 }
+/* Fourth box (Find your exams) */
+.exam-box {
+    left: ;  /* move right of the 3rd box */
+    top: 740px;    /* slightly lower than 3rd */
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: ;
+    min-width: 950px;
+    transition: ;
+}
+
 
 /* Hover effect */
 .text-box:hover {
@@ -113,3 +127,13 @@ nav button.active {
     box-shadow: 0 12px 35px rgba(0, 255, 204, 0.4);
     z-index: 10;
 }
+
+
+
+/* .text-box{
+    background-color: #fdfdfd;
+    
+    min-height: 400px;
+    min-width: 400px;
+    position-area: ;
+} */
