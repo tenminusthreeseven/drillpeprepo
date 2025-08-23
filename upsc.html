@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drill Pep - Preparation Tracker</title>
+  <title>Drill Pep – UPSC Preparation Tracker</title>
   <link rel="stylesheet" href="upsc.css">
 </head>
 <body>
@@ -13,31 +13,53 @@
     <section class="progress-section">
       <h1>Overall Progress</h1>
       <div class="progress-bar">
-        <div class="progress" style="width: 20%;"></div>
+        <div id="overall-progress" class="progress" style="width: 0%;"></div>
       </div>
-      <p>Goal: 100% | Progress: 20%</p>
+      <p id="progress-text">Progress: 0%</p>
     </section>
 
-    <!-- Subject Section -->
-    <section class="subject-section">
-      <h2>📘 Programming & Data Structures</h2>
-      <div class="progress-bar small">
-        <div class="progress" style="width: 40%;"></div>
+    <!-- UPSC Syllabus Section -->
+    <section class="syllabus-section">
+      <h2>UPSC Civil Services Examination – Detailed Syllabus</h2>
+
+      <!-- Example Subject (repeat for all subjects) -->
+      <div class="sub-section">
+        <h3>Prelims – General Studies Paper I</h3>
+        <ul>
+          <li><label><input type="checkbox" class="topic"> Current events of national and international importance</label></li>
+          <li><label><input type="checkbox" class="topic"> Ancient History – Art, Culture, Literature, Architecture</label></li>
+          <li><label><input type="checkbox" class="topic"> Medieval History – Delhi Sultanate, Mughal Empire, Regional Kingdoms</label></li>
+          <li><label><input type="checkbox" class="topic"> Modern History – British rule, Freedom Struggle, Post-Independence consolidation</label></li>
+          <li><label><input type="checkbox" class="topic"> Physical Geography – landforms, climate, oceanography</label></li>
+          <li><label><input type="checkbox" class="topic"> Indian Geography – resources, industries, agriculture</label></li>
+          <li><label><input type="checkbox" class="topic"> World Geography – distribution of resources, population</label></li>
+        </ul>
       </div>
-      <p>40% Complete</p>
 
-      <ul class="topic-list">
-        <li><input type="checkbox" checked> Programming in C</li>
-        <li><input type="checkbox" checked> Arrays</li>
-        <li><input type="checkbox"> Linked Lists</li>
-        <li><input type="checkbox"> Stacks</li>
-        <li><input type="checkbox"> Queues</li>
-        <li><input type="checkbox"> Trees</li>
-        <li><input type="checkbox"> Binary Search Trees</li>
-        <li><input type="checkbox"> Heaps</li>
-      </ul>
+      <div class="sub-section">
+        <h3>Prelims – General Studies Paper II (CSAT)</h3>
+        <ul>
+          <li><label><input type="checkbox" class="topic"> Comprehension</label></li>
+          <li><label><input type="checkbox" class="topic"> Logical reasoning and analytical ability</label></li>
+          <li><label><input type="checkbox" class="topic"> Basic numeracy (Class X level)</label></li>
+          <li><label><input type="checkbox" class="topic"> Data interpretation</label></li>
+        </ul>
+      </div>
+
+      <!-- You can add Mains & Optional Subjects here in the same way -->
     </section>
-
   </div>
+
+  <script src="upsc.js"></script>
+
+
+
+
+
+
+
+
+
+  
 </body>
 </html>

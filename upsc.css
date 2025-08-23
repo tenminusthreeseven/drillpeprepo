@@ -1,73 +1,59 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Dark Mode Background */
+/* General Styling */
 body {
   background-color: #0d0d0d;
   color: #00ff99;
-  display: flex;
-  justify-content: center;
+  font-family: Arial, sans-serif;
   padding: 20px;
 }
 
-/* Container */
 .container {
   width: 80%;
-  max-width: 800px;
+  max-width: 900px;
+  margin: auto;
 }
 
-/* Sections */
-section {
-  background: #1a1a1a;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
-}
-
-/* Titles */
-h1, h2 {
-  margin-bottom: 10px;
-}
-
-/* Progress Bars */
+/* Progress Bar */
 .progress-bar {
   width: 100%;
-  height: 12px;
+  height: 15px;
   background: #333;
   border-radius: 6px;
-  overflow: hidden;
   margin: 8px 0;
-}
-
-.progress-bar.small {
-  height: 8px;
+  overflow: hidden;
 }
 
 .progress {
   height: 100%;
   background: linear-gradient(90deg, #00ff99, #00cc66);
   border-radius: 6px;
+  transition: width 0.3s ease-in-out;
 }
 
-/* Topic List */
-.topic-list {
-  list-style: none;
-  margin-top: 15px;
+.progress-section h1 {
+  margin-bottom: 10px;
 }
 
-.topic-list li {
-  margin: 6px 0;
-  display: flex;
-  align-items: center;
+/* Syllabus Section */
+.syllabus-section {
+  background: #1a1a1a;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,153,0.3);
 }
 
-.topic-list input[type="checkbox"] {
-  margin-right: 10px;
+.sub-section {
+  margin-bottom: 20px;
+}
+
+.sub-section h3 {
+  margin-bottom: 10px;
+  color: #00ffaa;
+}
+
+/* Checkbox Styling */
+.topic {
   accent-color: #00ff99;
+  transform: scale(1.2);
+  margin-right: 10px;
 }
