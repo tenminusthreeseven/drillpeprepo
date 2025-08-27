@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NDA – Syllabus Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>NDA (National Defence Academy) – Syllabus Tracker</h1>
+
+    <!-- Overall Progress -->
+    <div class="progress-container">
+      <label>Overall Progress:</label>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <span id="progress-text">0% Complete</span>
+    </div>
+
+    <div class="syllabus-section">
+
+      <!-- ===================== MATHEMATICS ===================== -->
+      <div class="sub-section">
+        <h2>Mathematics</h2>
+
+        <h3>Algebra</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Sets, Relations & Functions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Complex Numbers & Quadratic Equations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Permutations & Combinations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Binomial Theorem & Its Applications</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Sequence & Series — Arithmetic & Geometric</span></label></li>
+        </ul>
+
+        <h3>Trigonometry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Trigonometric Ratios & Identities</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Solution of Trig Equations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Inverse Trig Functions</span></label></li>
+        </ul>
+
+        <h3>Analytical Geometry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Two-dimensional — Straight Lines, Circle, Conic Sections</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Three-dimensional — Planes, Lines, Coordinate Geometry</span></label></li>
+        </ul>
+
+        <h3>Differential Calculus</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Limits & Continuity</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Differentiation & Applications</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Maxima & Minima</span></label></li>
+        </ul>
+
+        <h3>Integral Calculus & Differential Equations</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Indefinite & Definite Integrals</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Applications of Integrals (Areas)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Differential Equations — First-order, Variables Separation</span></label></li>
+        </ul>
+
+        <h3>Vector Algebra</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Vectors & Scalars</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Dot & Cross Product</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Applications in Geometry</span></label></li>
+        </ul>
+
+        <h3>Statistics & Probability</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Mean, Median, Mode, Standard Deviation</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Probability — Basic Concepts, Conditional Probability</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== GENERAL ABILITY TEST (GAT) ===================== -->
+      <div class="sub-section">
+        <h2>General Ability Test (GAT)</h2>
+
+        <h3>English</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Grammar & Vocabulary (parts of speech, tenses)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Comprehension & Synonyms/Antonyms</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Sentence Structuring & Spotting Errors</span></label></li>
+        </ul>
+
+        <h3>General Knowledge — Physics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Physical world & measurement</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Mechanics, Heat, Sound</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Light, Electricity & Magnetism</span></label></li>
+        </ul>
+
+        <h3>General Knowledge — Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">P, S, & D block elements</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Chemical reactions & equations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Acids, Bases & Salts</span></label></li>
+        </ul>
+
+        <h3>General Knowledge — Biology</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Life processes</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Human anatomy & reproduction</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Plant & Animal kingdom basics</span></label></li>
+        </ul>
+
+        <h3>History</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Ancient, Medieval & Modern Indian History</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Freedom Struggle</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Post-independence consolidation & reorganization</span></label></li>
+        </ul>
+
+        <h3>Geography</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Physical Geography – earth structure, climate</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">World & Indian Geography – resources, rivers, mountains</span></label></li>
+        </ul>
+
+        <h3>Polity</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Indian Constitution — features & amendments</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Government structure — Union & State Governance</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Fundamental Rights & Duties, Preamble, DPSP</span></label></li>
+        </ul>
+
+        <h3>Economics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Basics of Indian Economy</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Planning & Budgeting</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Infrastructure, Resources & Sectors</span></label></li>
+        </ul>
+
+        <h3>General Mental Ability</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Logical reasoning, analogies, puzzles</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Non-verbal series, coding & decoding</span></label></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CUET PG – Master Syllabus Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>CUET PG – Master Syllabus Tracker</h1>
+
+    <!-- Overall Progress -->
+    <div class="progress-container">
+      <label>Overall Progress:</label>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <span id="progress-text">0% Complete</span>
+    </div>
+
+    <div class="syllabus-section">
+
+      <!-- ===================== GENERAL TEST (PG) ===================== -->
+      <div class="sub-section">
+        <h2>General Test (Compulsory)</h2>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">General English – comprehension, grammar, verbal ability</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">General Awareness – current affairs, national & international events</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">General Mental Ability – reasoning, data interpretation</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== MATHEMATICS (PG) ===================== -->
+      <div class="sub-section">
+        <h2>Mathematics (Domain Subject)</h2>
+
+        <h3>Real Analysis & Linear Algebra</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Sequences & series; limits; continuity; differentiability</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Riemann integral; mean value theorems; Taylor’s theorem</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Vector spaces; linear transformations; eigenvalues & eigenvectors</span></label></li>
+        </ul>
+
+        <h3>Complex Analysis & Topology (Basics)</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Analytic functions; Cauchy’s integral theorem; residues (overview)</span></label></li>
+        </ul>
+
+        <h3>Abstract Algebra</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Groups, subgroups, homomorphisms; rings & fields (basics)</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== PHYSICS (PG) ===================== -->
+      <div class="sub-section">
+        <h2>Physics (Domain Subject)</h2>
+
+        <h3>Condensed Matter & Quantum Mechanics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Crystal structures; Band theory and semiconductors</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Schrödinger equation; particle in box; harmonic oscillator</span></label></li>
+        </ul>
+
+        <h3>Statistical Mechanics & Thermodynamics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Maxwell–Boltzmann distribution; partition function; thermodynamic potentials</span></label></li>
+        </ul>
+
+        <h3>Electrodynamics & Optics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Maxwell’s equations; EM waves; waveguides (overview)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Interference, diffraction, polarization; lasers (basics)</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== CHEMISTRY (PG) ===================== -->
+      <div class="sub-section">
+        <h2>Chemistry (Domain Subject)</h2>
+
+        <h3>Advanced Physical Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Quantum chemistry basics; molecular orbital theory (overview)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Statistical thermodynamics (concepts, partition function)</span></label></li>
+        </ul>
+
+        <h3>Inorganic Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Coordination compounds: crystal field theory; isomerism</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Descriptive chemistry – p/d/f block elements, periodic trends</span></label></li>
+        </ul>
+
+        <h3>Organic Chemistry & Spectroscopy</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Reaction mechanisms: SN1/SN2, electrophilic additions, E1/E2</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Spectroscopy basics: UV-Vis, IR, NMR (principles)</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== ENGLISH (LANGUAGE PG) ===================== -->
+      <div class="sub-section">
+        <h2>English (Language Test)</h2>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Advanced Reading Comprehension & inference</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Critical reasoning; para-jumbles for academic texts</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Academic vocabulary: technical terms, collocations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Grammar & editing: academic style, ambiguity resolution</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== HINDI (भाषा PG) ===================== -->
+      <div class="sub-section">
+        <h2>Hindi (Language Test)</h2>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">वाच comprehension (academic passages)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">उन्नत व्याकरण और शैली (Improved grammar, editing passages)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Technical vocabulary, भारत एवं विश्व साहित्य</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== ECONOMICS (PG) ===================== -->
+      <div class="sub-section">
+        <h2>Economics (Domain Subject)</h2>
+
+        <h3>Microeconomics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Consumer behavior: utility, demand functions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Production & cost analysis; market structures</span></label></li>
+        </ul>
+
+        <h3>Macroeconomics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">National income accounts & GDP</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Monetary and fiscal policy basics</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Inflation, business cycles, money supply</span></label></li>
+        </ul>
+
+        <h3>Indian Economy</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Economic reforms post-1991; planning; budgeting</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Current India – schemes, challenges, sectors</span></label></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

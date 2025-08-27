@@ -1,10 +1,11 @@
-/* General Styling */
+/* === General Styling === */
 body {
   background-color: #0d0d0d;
-  color: #ffffff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow';
+  color: #190303;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 20px;
   font-size: larger;
+  text-align: center;
 }
 
 .container {
@@ -13,7 +14,14 @@ body {
   margin: auto;
 }
 
-/* Progress Bar */
+/* === Title === */
+h2 {
+  margin-bottom: 20px;
+  color: #ffdd57;
+  text-shadow: 0 0 6px rgba(255, 221, 87, 0.8);
+}
+
+/* === Progress Bar === */
 .progress-bar {
   width: 100%;
   height: 15px;
@@ -25,56 +33,73 @@ body {
 
 .progress {
   height: 100%;
-  background: linear-gradient(90deg, #bdff2d, #ff38de);
+  width: 0%;
+  background: linear-gradient(90deg, #bdff2d, #ff38de, #38ffdd);
   border-radius: 6px;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(189, 255, 45, 0.5);
 }
 
 .progress-section h1 {
   margin-bottom: 10px;
 }
 
-/* Syllabus Section */
+/* === Scrollable Syllabus Section === */
 .syllabus-section {
-  background: #1a1a1a;
+  width: 90%;
+  max-width: 850px;
+  margin: 30px auto 0 auto;
   padding: 20px;
-  margin-top: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(42, 95, 255, 0.3);
-}
-
-.sub-section {
-  margin-bottom: 20px;
-}
-
-.sub-section h3 {
-  margin-bottom: 10px;
-  color: #ff2d2d;
-}
-
-/* Checkbox Styling */
-.topic {
-  accent-color: #00ff99;
-  transform: scale(1.2);
-  margin-right: 10px;
-}
-.syllabus-section {
-  background: #1a1a1a;
-  padding: 20px;
-  margin-top: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(42, 95, 255, 0.2);
+  height: 450px;               /* fixed height */
+  overflow-y: scroll;          /* scroll enabled */
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(42, 95, 255, 0.3);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: left;
 }
 
 .syllabus-section:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 25px rgba(42, 95, 255, 0.5);
 }
+
+/* === Chapters === */
+.sub-section {
+  margin-bottom: 25px;
+}
+
+.sub-section h3 {
+  margin-bottom: 10px;
+  color: #ff2d2d;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 5px;
+  text-shadow: 0 0 6px rgba(255, 45, 45, 0.6);
+}
+
+.sub-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sub-section li {
+  margin: 8px 0;
+}
+
+/* === Checkbox Styling === */
+.topic {
+  accent-color: #00ff99;
+  transform: scale(1.2);
+  margin-right: 10px;
+}
+
 .topic-label {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   transition: background 0.3s ease;
   cursor: pointer;
@@ -88,23 +113,21 @@ input[type="checkbox"]:checked + span {
   text-decoration: line-through;
   opacity: 0.7;
 }
-.progress {
-  height: 100%;
-  background: linear-gradient(90deg, #bdff2d, #ff38de, #38ffdd);
-  border-radius: 6px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(189, 255, 45, 0.5);
-}
-.syllabus-section {
-  background: rgba(26, 26, 26, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
+
+/* === Animation === */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.syllabus-section {
-  animation: fadeIn 0.5s ease-in-out;
+/* === Scrollbar Styling (optional) === */
+.syllabus-section::-webkit-scrollbar {
+  width: 8px;
+}
+.syllabus-section::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ff38de, #38ffdd);
+  border-radius: 10px;
+}
+.syllabus-section::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
 }
