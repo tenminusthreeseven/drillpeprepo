@@ -72,8 +72,13 @@ nav button.active { color: #111; background: #00ffcc; }
   position: relative;
   width: 1200px;
   height: 600px;
+
+  /* Center horizontally */
   margin: 120px auto 0;
+  display: flex;
+  justify-content: center;
 }
+
 .text-box {
   position: absolute;
   width: 360px; height: 480px;
