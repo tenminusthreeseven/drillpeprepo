@@ -4,91 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RRB Group D Syllabus Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="upsc.css">
+  <script defer>
+    // Progress Bar Logic
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll(".topic");
+      const checked = document.querySelectorAll(".topic:checked");
+      const progress = document.querySelector(".progress");
+      const percent = Math.round((checked.length / checkboxes.length) * 100);
+      progress.style.width = percent + "%";
+      progress.textContent = percent + "%";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const checkboxes = document.querySelectorAll(".topic");
+      checkboxes.forEach(cb => cb.addEventListener("change", updateProgress));
+      updateProgress();
+    });
+  </script>
 </head>
 <body>
-  <div class="container">
-    <h1>RRB Group D – Preparation Tracker</h1>
+  <h1>RRB Group D – Preparation Tracker</h1>
 
-    <!-- General Science -->
-    <section>
-      <h2>General Science</h2>
-      <ul>
-        <li><input type="checkbox"> Physics (up to 10th Standard)</li>
-        <li><input type="checkbox"> Chemistry (up to 10th Standard)</li>
-        <li><input type="checkbox"> Life Sciences / Biology (up to 10th Standard)</li>
-      </ul>
-    </section>
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress">0%</div>
+  </div>
+
+  <!-- Scrollable Syllabus -->
+  <div class="syllabus-section">
 
     <!-- Mathematics -->
-    <section>
-      <h2>Mathematics</h2>
+    <div class="sub-section">
+      <h3>Mathematics</h3>
       <ul>
-        <li><input type="checkbox"> Number System</li>
-        <li><input type="checkbox"> BODMAS</li>
-        <li><input type="checkbox"> Decimals</li>
-        <li><input type="checkbox"> Fractions</li>
-        <li><input type="checkbox"> LCM & HCF</li>
-        <li><input type="checkbox"> Ratio and Proportion</li>
-        <li><input type="checkbox"> Percentages</li>
-        <li><input type="checkbox"> Mensuration</li>
-        <li><input type="checkbox"> Time and Work</li>
-        <li><input type="checkbox"> Time and Distance</li>
-        <li><input type="checkbox"> Simple and Compound Interest</li>
-        <li><input type="checkbox"> Profit and Loss</li>
-        <li><input type="checkbox"> Algebra</li>
-        <li><input type="checkbox"> Geometry</li>
-        <li><input type="checkbox"> Trigonometry (Basics)</li>
-        <li><input type="checkbox"> Elementary Statistics</li>
-        <li><input type="checkbox"> Square Root</li>
-        <li><input type="checkbox"> Age Calculations</li>
-        <li><input type="checkbox"> Calendar & Clock</li>
-        <li><input type="checkbox"> Pipes and Cistern</li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Number System</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>BODMAS</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Decimals</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Fractions</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>LCM & HCF</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Ratio and Proportion</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Percentages</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Mensuration (2D & 3D)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Time and Work</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Time and Distance</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Simple Interest</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Compound Interest</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Profit and Loss</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Algebra (Basic)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Geometry</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Trigonometry (Basics)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Elementary Statistics</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Square Root</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Age Calculations</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Calendar & Clock</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Pipes and Cistern</span></label></li>
       </ul>
-    </section>
+    </div>
 
     <!-- General Intelligence & Reasoning -->
-    <section>
-      <h2>General Intelligence & Reasoning</h2>
+    <div class="sub-section">
+      <h3>General Intelligence & Reasoning</h3>
       <ul>
-        <li><input type="checkbox"> Analogies</li>
-        <li><input type="checkbox"> Alphabetical and Number Series</li>
-        <li><input type="checkbox"> Coding and Decoding</li>
-        <li><input type="checkbox"> Mathematical Operations</li>
-        <li><input type="checkbox"> Similarities and Differences</li>
-        <li><input type="checkbox"> Relationships</li>
-        <li><input type="checkbox"> Syllogism</li>
-        <li><input type="checkbox"> Jumbling</li>
-        <li><input type="checkbox"> Venn Diagrams</li>
-        <li><input type="checkbox"> Puzzle (Seating, Arrangements, etc.)</li>
-        <li><input type="checkbox"> Data Sufficiency</li>
-        <li><input type="checkbox"> Statement–Conclusion</li>
-        <li><input type="checkbox"> Statement–Courses of Action</li>
-        <li><input type="checkbox"> Decision Making</li>
-        <li><input type="checkbox"> Maps</li>
-        <li><input type="checkbox"> Interpretation of Graphs</li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Analogies</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Alphabetical & Number Series</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Coding & Decoding</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Mathematical Operations</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Similarities & Differences</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Relationships</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Syllogism</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Jumbling</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Venn Diagrams</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Puzzle (Seating Arrangements, etc.)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Data Sufficiency</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Statement–Conclusion</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Statement–Courses of Action</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Decision Making</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Maps</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Interpretation of Graphs</span></label></li>
       </ul>
-    </section>
+    </div>
+
+    <!-- General Science -->
+    <div class="sub-section">
+      <h3>General Science</h3>
+      <ul>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Physics (up to 10th Standard)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Chemistry (up to 10th Standard)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Biology (up to 10th Standard)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Life Processes & Human Body Basics</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Environmental Science (Basics)</span></label></li>
+      </ul>
+    </div>
 
     <!-- General Awareness & Current Affairs -->
-    <section>
-      <h2>General Awareness & Current Affairs</h2>
+    <div class="sub-section">
+      <h3>General Awareness & Current Affairs</h3>
       <ul>
-        <li><input type="checkbox"> Science & Technology Developments</li>
-        <li><input type="checkbox"> Sports</li>
-        <li><input type="checkbox"> Culture</li>
-        <li><input type="checkbox"> Personalities</li>
-        <li><input type="checkbox"> Economics</li>
-        <li><input type="checkbox"> Politics</li>
-        <li><input type="checkbox"> History</li>
-        <li><input type="checkbox"> Geography</li>
-        <li><input type="checkbox"> Indian Constitution</li>
-        <li><input type="checkbox"> Environmental Issues</li>
-        <li><input type="checkbox"> Important Government Schemes</li>
-        <li><input type="checkbox"> Current National & International Events</li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>History (Ancient, Medieval, Modern)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Geography (Indian & World)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Indian Polity & Constitution</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Economics & Finance (Basic)</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Sports</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Culture & Art</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Science & Technology Developments</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Environmental Issues</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Famous Personalities</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Important Government Schemes</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Current National Events</span></label></li>
+        <li><label class="topic-label"><input type="checkbox" class="topic"><span>Current International Events</span></label></li>
       </ul>
-    </section>
+    </div>
 
   </div>
 </body>

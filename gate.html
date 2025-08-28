@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GATE CSE – Preparation Tracker</title>
+  <link rel="stylesheet" href="chsl.css"> <!-- reuse your CSS -->
+  <script src="neet.js" defer></script> <!-- reuse your JS -->
+</head>
+<body>
+  <div class="container">
+    <div class="progress-card">
+      <h2>Overall Progress</h2>
+      <div class="progress-bar">
+        <div id="overall-progress" class="progress"></div>
+      </div>
+      <p>🎯 Goal: 100% <span id="overall-percent">Progress: 0%</span></p>
+    </div>
+
+    <!-- Engineering Mathematics -->
+    <div class="subject-card">
+      <h3>📐 Engineering Mathematics <span class="percent" id="maths-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="maths-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic maths"> Discrete Mathematics (Propositional & First Order Logic, Sets, Relations, Functions, Partial Orders, Lattices, Groups)</li>
+        <li><input type="checkbox" class="topic maths"> Linear Algebra (Matrices, Determinants, Systems of Linear Equations, Eigenvalues, Eigenvectors)</li>
+        <li><input type="checkbox" class="topic maths"> Calculus (Limits, Continuity, Differentiation, Maxima & Minima, Mean Value Theorem, Integration)</li>
+        <li><input type="checkbox" class="topic maths"> Probability & Statistics (Random Variables, Uniform/Normal/Binomial/Poisson, Mean, Median, Variance, Conditional Probability, Bayes’ Theorem)</li>
+        <li><input type="checkbox" class="topic maths"> Numerical Methods (Solutions of Linear & Nonlinear Equations, Interpolation, Numerical Integration, Numerical Solutions of Differential Equations)</li>
+      </ul>
+    </div>
+
+    <!-- Digital Logic -->
+    <div class="subject-card">
+      <h3>🔢 Digital Logic <span class="percent" id="digital-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="digital-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic digital"> Boolean Algebra, Propositional Logic</li>
+        <li><input type="checkbox" class="topic digital"> Logic Gates & Truth Tables</li>
+        <li><input type="checkbox" class="topic digital"> Minimization (K-map, Quine McCluskey)</li>
+        <li><input type="checkbox" class="topic digital"> Combinational Circuits (Adders, Multiplexers, Decoders, Encoders)</li>
+        <li><input type="checkbox" class="topic digital"> Sequential Circuits (Flip-Flops, Latches, Counters, Shift Registers)</li>
+        <li><input type="checkbox" class="topic digital"> Number Representation & Arithmetic</li>
+        <li><input type="checkbox" class="topic digital"> Computer Arithmetic (Fixed/Floating Point, Booth’s Algorithm, Restoring/Non-Restoring Division)</li>
+      </ul>
+    </div>
+
+    <!-- Computer Organization & Architecture -->
+    <div class="subject-card">
+      <h3>🖥️ Computer Organization & Architecture <span class="percent" id="coa-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="coa-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic coa"> Machine Instructions & Addressing Modes</li>
+        <li><input type="checkbox" class="topic coa"> ALU, Data Path, Control Unit</li>
+        <li><input type="checkbox" class="topic coa"> Instruction Pipelining & Hazards</li>
+        <li><input type="checkbox" class="topic coa"> Memory Hierarchy (Cache, Main Memory, Secondary Storage)</li>
+        <li><input type="checkbox" class="topic coa"> Cache Mapping & Replacement Policies</li>
+        <li><input type="checkbox" class="topic coa"> Virtual Memory & Paging</li>
+        <li><input type="checkbox" class="topic coa"> I/O Interfaces & Interrupts</li>
+      </ul>
+    </div>
+
+    <!-- Programming & Data Structures -->
+    <div class="subject-card">
+      <h3>💻 Programming & Data Structures <span class="percent" id="pds-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="pds-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic pds"> C Programming Concepts</li>
+        <li><input type="checkbox" class="topic pds"> Recursion</li>
+        <li><input type="checkbox" class="topic pds"> Arrays, Stacks, Queues, Linked Lists</li>
+        <li><input type="checkbox" class="topic pds"> Trees, Binary Search Trees, Heaps</li>
+        <li><input type="checkbox" class="topic pds"> Graphs (BFS, DFS, Shortest Path, Spanning Trees)</li>
+        <li><input type="checkbox" class="topic pds"> Hashing</li>
+      </ul>
+    </div>
+
+    <!-- Algorithms -->
+    <div class="subject-card">
+      <h3>📊 Algorithms <span class="percent" id="algo-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="algo-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic algo"> Analysis of Algorithms (Asymptotic Notation, Time & Space Complexity, Recurrence Relations, Master Theorem)</li>
+        <li><input type="checkbox" class="topic algo"> Searching & Sorting (Binary Search, Quick Sort, Merge Sort, Heap Sort)</li>
+        <li><input type="checkbox" class="topic algo"> Greedy Algorithms</li>
+        <li><input type="checkbox" class="topic algo"> Dynamic Programming</li>
+        <li><input type="checkbox" class="topic algo"> Graph Algorithms (Dijkstra, Kruskal, Prim, Floyd-Warshall, Bellman-Ford)</li>
+        <li><input type="checkbox" class="topic algo"> NP-Completeness & Approximation</li>
+      </ul>
+    </div>
+
+    <!-- Theory of Computation -->
+    <div class="subject-card">
+      <h3>📘 Theory of Computation <span class="percent" id="toc-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="toc-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic toc"> Regular Languages & Finite Automata</li>
+        <li><input type="checkbox" class="topic toc"> Context Free Languages & Pushdown Automata</li>
+        <li><input type="checkbox" class="topic toc"> Turing Machines</li>
+        <li><input type="checkbox" class="topic toc"> Undecidability & NP Problems</li>
+      </ul>
+    </div>
+
+    <!-- Compiler Design -->
+    <div class="subject-card">
+      <h3>📝 Compiler Design <span class="percent" id="compiler-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="compiler-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic compiler"> Lexical Analysis</li>
+        <li><input type="checkbox" class="topic compiler"> Syntax Analysis (Parsers, LL, LR)</li>
+        <li><input type="checkbox" class="topic compiler"> Semantic Analysis</li>
+        <li><input type="checkbox" class="topic compiler"> Intermediate Code Generation</li>
+        <li><input type="checkbox" class="topic compiler"> Code Optimization</li>
+        <li><input type="checkbox" class="topic compiler"> Code Generation</li>
+      </ul>
+    </div>
+
+    <!-- Operating System -->
+    <div class="subject-card">
+      <h3>🖱️ Operating System <span class="percent" id="os-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="os-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic os"> Processes, Threads, CPU Scheduling</li>
+        <li><input type="checkbox" class="topic os"> Synchronization (Semaphores, Monitors, Deadlock)</li>
+        <li><input type="checkbox" class="topic os"> Memory Management (Paging, Segmentation, Virtual Memory)</li>
+        <li><input type="checkbox" class="topic os"> File Systems</li>
+        <li><input type="checkbox" class="topic os"> I/O Systems</li>
+      </ul>
+    </div>
+
+    <!-- Databases -->
+    <div class="subject-card">
+      <h3>🗄️ Databases <span class="percent" id="db-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="db-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic db"> ER Models & Relational Models</li>
+        <li><input type="checkbox" class="topic db"> Relational Algebra & SQL</li>
+        <li><input type="checkbox" class="topic db"> Integrity Constraints & Normalization</li>
+        <li><input type="checkbox" class="topic db"> File Organization & Indexing</li>
+        <li><input type="checkbox" class="topic db"> Transactions & Concurrency Control</li>
+        <li><input type="checkbox" class="topic db"> Recovery Systems</li>
+      </ul>
+    </div>
+
+    <!-- Computer Networks -->
+    <div class="subject-card">
+      <h3>🌐 Computer Networks <span class="percent" id="cn-percent">0.0% Complete</span></h3>
+      <div class="progress-bar"><div id="cn-progress" class="progress"></div></div>
+      <ul>
+        <li><input type="checkbox" class="topic cn"> OSI & TCP/IP Models</li>
+        <li><input type="checkbox" class="topic cn"> Data Link Layer (Error Detection, ARQ, MAC Protocols)</li>
+        <li><input type="checkbox" class="topic cn"> Network Layer (IPv4, Subnetting, Routing Algorithms, ICMP)</li>
+        <li><input type="checkbox" class="topic cn"> Transport Layer (TCP, UDP, Congestion Control, Flow Control)</li>
+        <li><input type="checkbox" class="topic cn"> Application Layer (DNS, HTTP, SMTP, FTP)</li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -12,4 +12,3 @@ function updateProgress() {
 
 // Attach listener to every checkbox
 checkboxes.forEach(cb => cb.addEventListener("change", updateProgress));
-
