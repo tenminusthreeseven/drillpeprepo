@@ -4,30 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSC GD Constable Syllabus Tracker</title>
-  <link rel="stylesheet" href="chsl.css">
-  <script src="chsl.js" defer></script>
+  <style>
+    /* === Black Theme === */
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #00e676;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    /* Cross line when checked */
+    input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      margin: 20px 0;
+      background: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 25px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00e676, #1de9b6);
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>SSC GD Constable – Preparation Tracker</h1>
 
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="progress-text" id="progress-text">0% Completed</div>
+
     <!-- General Intelligence & Reasoning -->
     <section>
       <h2>General Intelligence & Reasoning</h2>
       <ul>
-        <li><input type="checkbox"> Analogies</li>
-        <li><input type="checkbox"> Similarities & Differences</li>
-        <li><input type="checkbox"> Spatial Visualization</li>
-        <li><input type="checkbox"> Spatial Orientation</li>
-        <li><input type="checkbox"> Visual Memory</li>
-        <li><input type="checkbox"> Discrimination</li>
-        <li><input type="checkbox"> Observation</li>
-        <li><input type="checkbox"> Relationship Concepts</li>
-        <li><input type="checkbox"> Arithmetic Reasoning</li>
-        <li><input type="checkbox"> Figural Classification</li>
-        <li><input type="checkbox"> Non-Verbal Series</li>
-        <li><input type="checkbox"> Coding–Decoding</li>
-        <li><input type="checkbox"> Statement–Conclusion</li>
+        <li><label><input type="checkbox"><span>Analogies</span></label></li>
+        <li><label><input type="checkbox"><span>Similarities & Differences</span></label></li>
+        <li><label><input type="checkbox"><span>Spatial Visualization</span></label></li>
+        <li><label><input type="checkbox"><span>Spatial Orientation</span></label></li>
+        <li><label><input type="checkbox"><span>Visual Memory</span></label></li>
+        <li><label><input type="checkbox"><span>Discrimination</span></label></li>
+        <li><label><input type="checkbox"><span>Observation</span></label></li>
+        <li><label><input type="checkbox"><span>Relationship Concepts</span></label></li>
+        <li><label><input type="checkbox"><span>Arithmetic Reasoning</span></label></li>
+        <li><label><input type="checkbox"><span>Figural Classification</span></label></li>
+        <li><label><input type="checkbox"><span>Non-Verbal Series</span></label></li>
+        <li><label><input type="checkbox"><span>Coding–Decoding</span></label></li>
+        <li><label><input type="checkbox"><span>Statement–Conclusion</span></label></li>
       </ul>
     </section>
 
@@ -35,21 +112,21 @@
     <section>
       <h2>Elementary Mathematics</h2>
       <ul>
-        <li><input type="checkbox"> Number Systems</li>
-        <li><input type="checkbox"> Computation of Whole Numbers</li>
-        <li><input type="checkbox"> Decimals & Fractions</li>
-        <li><input type="checkbox"> Relationship Between Numbers</li>
-        <li><input type="checkbox"> Fundamental Arithmetical Operations</li>
-        <li><input type="checkbox"> Percentages</li>
-        <li><input type="checkbox"> Ratio and Proportion</li>
-        <li><input type="checkbox"> Averages</li>
-        <li><input type="checkbox"> Interest (Simple & Compound)</li>
-        <li><input type="checkbox"> Profit & Loss</li>
-        <li><input type="checkbox"> Discount</li>
-        <li><input type="checkbox"> Mensuration</li>
-        <li><input type="checkbox"> Time and Distance</li>
-        <li><input type="checkbox"> Ratio and Time</li>
-        <li><input type="checkbox"> Time and Work</li>
+        <li><label><input type="checkbox"><span>Number Systems</span></label></li>
+        <li><label><input type="checkbox"><span>Computation of Whole Numbers</span></label></li>
+        <li><label><input type="checkbox"><span>Decimals & Fractions</span></label></li>
+        <li><label><input type="checkbox"><span>Relationship Between Numbers</span></label></li>
+        <li><label><input type="checkbox"><span>Fundamental Arithmetical Operations</span></label></li>
+        <li><label><input type="checkbox"><span>Percentages</span></label></li>
+        <li><label><input type="checkbox"><span>Ratio and Proportion</span></label></li>
+        <li><label><input type="checkbox"><span>Averages</span></label></li>
+        <li><label><input type="checkbox"><span>Interest (Simple & Compound)</span></label></li>
+        <li><label><input type="checkbox"><span>Profit & Loss</span></label></li>
+        <li><label><input type="checkbox"><span>Discount</span></label></li>
+        <li><label><input type="checkbox"><span>Mensuration</span></label></li>
+        <li><label><input type="checkbox"><span>Time and Distance</span></label></li>
+        <li><label><input type="checkbox"><span>Ratio and Time</span></label></li>
+        <li><label><input type="checkbox"><span>Time and Work</span></label></li>
       </ul>
     </section>
 
@@ -57,17 +134,17 @@
     <section>
       <h2>General Knowledge & General Awareness</h2>
       <ul>
-        <li><input type="checkbox"> Current Events (India & World)</li>
-        <li><input type="checkbox"> India and its Neighboring Countries</li>
-        <li><input type="checkbox"> Sports</li>
-        <li><input type="checkbox"> History</li>
-        <li><input type="checkbox"> Culture</li>
-        <li><input type="checkbox"> Geography</li>
-        <li><input type="checkbox"> Economic Scene</li>
-        <li><input type="checkbox"> General Polity</li>
-        <li><input type="checkbox"> Indian Constitution</li>
-        <li><input type="checkbox"> Scientific Research</li>
-        <li><input type="checkbox"> National & International Importance</li>
+        <li><label><input type="checkbox"><span>Current Events (India & World)</span></label></li>
+        <li><label><input type="checkbox"><span>India and its Neighboring Countries</span></label></li>
+        <li><label><input type="checkbox"><span>Sports</span></label></li>
+        <li><label><input type="checkbox"><span>History</span></label></li>
+        <li><label><input type="checkbox"><span>Culture</span></label></li>
+        <li><label><input type="checkbox"><span>Geography</span></label></li>
+        <li><label><input type="checkbox"><span>Economic Scene</span></label></li>
+        <li><label><input type="checkbox"><span>General Polity</span></label></li>
+        <li><label><input type="checkbox"><span>Indian Constitution</span></label></li>
+        <li><label><input type="checkbox"><span>Scientific Research</span></label></li>
+        <li><label><input type="checkbox"><span>National & International Importance</span></label></li>
       </ul>
     </section>
 
@@ -75,15 +152,32 @@
     <section>
       <h2>English / Hindi</h2>
       <ul>
-        <li><input type="checkbox"> Error Spotting</li>
-        <li><input type="checkbox"> Fill in the Blanks</li>
-        <li><input type="checkbox"> Vocabulary (Synonyms, Antonyms, Spellings)</li>
-        <li><input type="checkbox"> Grammar</li>
-        <li><input type="checkbox"> Sentence Structure</li>
-        <li><input type="checkbox"> Comprehension Passage</li>
+        <li><label><input type="checkbox"><span>Error Spotting</span></label></li>
+        <li><label><input type="checkbox"><span>Fill in the Blanks</span></label></li>
+        <li><label><input type="checkbox"><span>Vocabulary (Synonyms, Antonyms, Spellings)</span></label></li>
+        <li><label><input type="checkbox"><span>Grammar</span></label></li>
+        <li><label><input type="checkbox"><span>Sentence Structure</span></label></li>
+        <li><label><input type="checkbox"><span>Comprehension Passage</span></label></li>
       </ul>
     </section>
 
   </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const percent = Math.round((checked / total) * 100);
+
+      progressBar.style.width = percent + "%";
+      progressText.textContent = percent + "% Completed";
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+  </script>
 </body>
 </html>

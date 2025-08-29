@@ -4,8 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GATE CSE – Preparation Tracker</title>
-  <link rel="stylesheet" href="chsl.css"> <!-- reuse your CSS -->
-  <script src="neet.js" defer></script> <!-- reuse your JS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .progress-card, .subject-card {
+      background: #1e1e1e;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    h2, h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 18px;
+      background: #333;
+      border-radius: 9px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg,#00e676,#1de9b6);
+      transition: width 0.3s ease;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 5px 0;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+    .percent {
+      font-size: 0.9em;
+      color: #aaa;
+    }
+    .done {
+      text-decoration: line-through;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -153,7 +208,60 @@
         <li><input type="checkbox" class="topic cn"> Application Layer (DNS, HTTP, SMTP, FTP)</li>
       </ul>
     </div>
-
   </div>
+
+<script>
+  const subjects = [
+    {cls: "maths", prog: "maths-progress", perc: "maths-percent"},
+    {cls: "digital", prog: "digital-progress", perc: "digital-percent"},
+    {cls: "coa", prog: "coa-progress", perc: "coa-percent"},
+    {cls: "pds", prog: "pds-progress", perc: "pds-percent"},
+    {cls: "algo", prog: "algo-progress", perc: "algo-percent"},
+    {cls: "toc", prog: "toc-progress", perc: "toc-percent"},
+    {cls: "compiler", prog: "compiler-progress", perc: "compiler-percent"},
+    {cls: "os", prog: "os-progress", perc: "os-percent"},
+    {cls: "db", prog: "db-progress", perc: "db-percent"},
+    {cls: "cn", prog: "cn-progress", perc: "cn-percent"}
+  ];
+
+  function updateSubjectProgress(subject) {
+    const checkboxes = document.querySelectorAll(`.topic.${subject.cls}`);
+    const checked = document.querySelectorAll(`.topic.${subject.cls}:checked`);
+    const percent = checkboxes.length ? (checked.length / checkboxes.length) * 100 : 0;
+    document.getElementById(subject.prog).style.width = percent + "%";
+    document.getElementById(subject.perc).innerText = percent.toFixed(1) + "% Complete";
+  }
+
+  function updateOverallProgress() {
+    const all = document.querySelectorAll(".topic");
+    const done = document.querySelectorAll(".topic:checked");
+    const percent = all.length ? (done.length / all.length) * 100 : 0;
+    document.getElementById("overall-progress").style.width = percent + "%";
+    document.getElementById("overall-percent").innerText = "Progress: " + percent.toFixed(1) + "%";
+  }
+
+  function toggleStrikethrough() {
+    document.querySelectorAll(".topic").forEach(cb => {
+      if (cb.checked) {
+        cb.parentElement.classList.add("done");
+      } else {
+        cb.parentElement.classList.remove("done");
+      }
+    });
+  }
+
+  document.querySelectorAll(".topic").forEach(cb => {
+    cb.addEventListener("change", () => {
+      subjects.forEach(updateSubjectProgress);
+      updateOverallProgress();
+      toggleStrikethrough();
+    });
+  });
+
+  // initialize
+  subjects.forEach(updateSubjectProgress);
+  updateOverallProgress();
+  toggleStrikethrough();
+</script>
 </body>
 </html>
