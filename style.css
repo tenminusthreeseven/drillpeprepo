@@ -228,3 +228,13 @@ nav button.active { color: #111; background: #00ffcc; }
   .exam-card { flex: 0 1 100%; }
   .hero h1 { font-size: 2.2rem; }
 }
+
+
+.see-all-container{
+  text-align: center;
+  text-decoration-color: white;
+}
+.see-all-btn{
+  display:inline-block;
+  border-color: #04a830;
+}
