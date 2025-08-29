@@ -4,8 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UPSI – Preparation Tracker</title>
-  <link rel="stylesheet" href="chsl.css">
-  <script src="chsl.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    h2, h3 {
+      margin-top: 0;
+    }
+    .progress-bar {
+      background: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+      margin: 10px 0;
+    }
+    .progress {
+      background: #4caf50;
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    li.checked {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -81,7 +135,7 @@
       </ul>
     </section>
 
-    <!-- Mental Aptitude / Intelligence -->
+    <!-- Mental Aptitude -->
     <section class="subject card" data-subject="Mental Aptitude">
       <h3>🧠 Mental Aptitude & Intelligence</h3>
       <div class="progress-bar">
@@ -101,7 +155,7 @@
       </ul>
     </section>
 
-    <!-- Law/Constitution/Police Act -->
+    <!-- Law/Constitution -->
     <section class="subject card" data-subject="Law & Constitution">
       <h3>⚖️ Law & Constitution</h3>
       <div class="progress-bar">
@@ -120,5 +174,48 @@
     </section>
 
   </div>
+
+  <script>
+    const subjects = document.querySelectorAll('.subject');
+    const overallProgress = document.getElementById('overall-progress');
+    const overallText = document.getElementById('overall-progress-text');
+
+    function updateProgress() {
+      let total = 0, done = 0;
+
+      subjects.forEach(subject => {
+        const checkboxes = subject.querySelectorAll('input[type="checkbox"]');
+        const progressBar = subject.querySelector('.progress');
+        let subjectDone = 0;
+
+        checkboxes.forEach(cb => {
+          total++;
+          if (cb.checked) subjectDone++;
+        });
+
+        const percent = (subjectDone / checkboxes.length) * 100;
+        progressBar.style.width = percent + '%';
+      });
+
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        if (cb.checked) {
+          cb.parentElement.classList.add('checked');
+          done++;
+        } else {
+          cb.parentElement.classList.remove('checked');
+        }
+      });
+
+      const overallPercent = total ? Math.round((done / total) * 100) : 0;
+      overallProgress.style.width = overallPercent + '%';
+      overallText.textContent = overallPercent + '%';
+    }
+
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', updateProgress);
+    });
+
+    updateProgress();
+  </script>
 </body>
 </html>

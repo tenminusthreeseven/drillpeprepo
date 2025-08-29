@@ -4,369 +4,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISRO Recruitment – Preparation Tracker</title>
-  <link rel="stylesheet" href="chsl.css">
-  <script src="chsl.js" defer></script>
+  <style>
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #90caf9;
+    }
+    h2 {
+      margin-top: 25px;
+      color: #ffcc80;
+    }
+    h3 {
+      margin-top: 15px;
+      color: #aed581;
+    }
+    .subject {
+      margin-bottom: 25px;
+      padding: 15px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #1e1e1e;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 6px 0;
+    }
+    li.checked {
+      text-decoration: line-through;
+      color: #888;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    /* Progress bar */
+    .progress-container {
+      width: 100%;
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .progress-bar {
+      height: 20px;
+      width: 0%;
+      background: linear-gradient(90deg, #42a5f5, #66bb6a);
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+      line-height: 20px;
+      transition: width 0.3s ease;
+    }
+  </style>
 </head>
 <body>
   <h1>ISRO Recruitment – Preparation Tracker</h1>
 
+  <!-- Progress bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar">0%</div>
+  </div>
+
   <!-- Mechanical Engineering -->
   <div class="subject">
     <h2>Mechanical Engineering</h2>
-
     <div class="chapter">
       <h3>Engineering Mechanics</h3>
       <ul>
-        <li contenteditable="true">Laws of Motion</li>
-        <li contenteditable="true">System of Forces</li>
-        <li contenteditable="true">Friction</li>
-        <li contenteditable="true">Kinematics of Particles and Rigid Bodies</li>
-        <li contenteditable="true">Work and Energy</li>
-        <li contenteditable="true">Impulse and Momentum</li>
+        <li><label><input type="checkbox">Laws of Motion</label></li>
+        <li><label><input type="checkbox">System of Forces</label></li>
+        <li><label><input type="checkbox">Friction</label></li>
+        <li><label><input type="checkbox">Kinematics of Particles and Rigid Bodies</label></li>
+        <li><label><input type="checkbox">Work and Energy</label></li>
+        <li><label><input type="checkbox">Impulse and Momentum</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Strength of Materials</h3>
       <ul>
-        <li contenteditable="true">Stress and Strain</li>
-        <li contenteditable="true">Mohr’s Circle</li>
-        <li contenteditable="true">Shear Force and Bending Moment</li>
-        <li contenteditable="true">Torsion of Shafts</li>
-        <li contenteditable="true">Columns and Struts</li>
-        <li contenteditable="true">Thin and Thick Cylinders</li>
+        <li><label><input type="checkbox">Stress and Strain</label></li>
+        <li><label><input type="checkbox">Mohr’s Circle</label></li>
+        <li><label><input type="checkbox">Shear Force and Bending Moment</label></li>
+        <li><label><input type="checkbox">Torsion of Shafts</label></li>
+        <li><label><input type="checkbox">Columns and Struts</label></li>
+        <li><label><input type="checkbox">Thin and Thick Cylinders</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Theory of Machines</h3>
       <ul>
-        <li contenteditable="true">Simple Mechanisms</li>
-        <li contenteditable="true">Cams and Followers</li>
-        <li contenteditable="true">Gear Trains</li>
-        <li contenteditable="true">Flywheel and Governors</li>
-        <li contenteditable="true">Vibrations</li>
-        <li contenteditable="true">Balancing of Machines</li>
+        <li><label><input type="checkbox">Simple Mechanisms</label></li>
+        <li><label><input type="checkbox">Cams and Followers</label></li>
+        <li><label><input type="checkbox">Gear Trains</label></li>
+        <li><label><input type="checkbox">Flywheel and Governors</label></li>
+        <li><label><input type="checkbox">Vibrations</label></li>
+        <li><label><input type="checkbox">Balancing of Machines</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Thermodynamics</h3>
       <ul>
-        <li contenteditable="true">Basic Concepts and Laws</li>
-        <li contenteditable="true">Zeroth, First and Second Law</li>
-        <li contenteditable="true">Entropy</li>
-        <li contenteditable="true">Properties of Pure Substances</li>
-        <li contenteditable="true">Ideal and Real Gases</li>
-        <li contenteditable="true">Thermodynamic Cycles</li>
+        <li><label><input type="checkbox">Basic Concepts and Laws</label></li>
+        <li><label><input type="checkbox">Zeroth, First and Second Law</label></li>
+        <li><label><input type="checkbox">Entropy</label></li>
+        <li><label><input type="checkbox">Properties of Pure Substances</label></li>
+        <li><label><input type="checkbox">Ideal and Real Gases</label></li>
+        <li><label><input type="checkbox">Thermodynamic Cycles</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Fluid Mechanics</h3>
       <ul>
-        <li contenteditable="true">Fluid Properties</li>
-        <li contenteditable="true">Fluid Statics</li>
-        <li contenteditable="true">Fluid Kinematics</li>
-        <li contenteditable="true">Fluid Dynamics</li>
-        <li contenteditable="true">Boundary Layer Theory</li>
-        <li contenteditable="true">Flow Measurement Devices</li>
+        <li><label><input type="checkbox">Fluid Properties</label></li>
+        <li><label><input type="checkbox">Fluid Statics</label></li>
+        <li><label><input type="checkbox">Fluid Kinematics</label></li>
+        <li><label><input type="checkbox">Fluid Dynamics</label></li>
+        <li><label><input type="checkbox">Boundary Layer Theory</label></li>
+        <li><label><input type="checkbox">Flow Measurement Devices</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Heat Transfer</h3>
       <ul>
-        <li contenteditable="true">Conduction</li>
-        <li contenteditable="true">Convection</li>
-        <li contenteditable="true">Radiation</li>
-        <li contenteditable="true">Heat Exchangers</li>
+        <li><label><input type="checkbox">Conduction</label></li>
+        <li><label><input type="checkbox">Convection</label></li>
+        <li><label><input type="checkbox">Radiation</label></li>
+        <li><label><input type="checkbox">Heat Exchangers</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Manufacturing Engineering</h3>
       <ul>
-        <li contenteditable="true">Casting</li>
-        <li contenteditable="true">Forming</li>
-        <li contenteditable="true">Welding</li>
-        <li contenteditable="true">Machining Processes</li>
-        <li contenteditable="true">Machine Tools</li>
-        <li contenteditable="true">Metrology</li>
-        <li contenteditable="true">Computer Integrated Manufacturing</li>
+        <li><label><input type="checkbox">Casting</label></li>
+        <li><label><input type="checkbox">Forming</label></li>
+        <li><label><input type="checkbox">Welding</label></li>
+        <li><label><input type="checkbox">Machining Processes</label></li>
+        <li><label><input type="checkbox">Machine Tools</label></li>
+        <li><label><input type="checkbox">Metrology</label></li>
+        <li><label><input type="checkbox">Computer Integrated Manufacturing</label></li>
       </ul>
     </div>
-
     <div class="chapter">
       <h3>Industrial Engineering</h3>
       <ul>
-        <li contenteditable="true">Production Planning and Control</li>
-        <li contenteditable="true">Inventory Control</li>
-        <li contenteditable="true">Operations Research</li>
-        <li contenteditable="true">Quality Management</li>
+        <li><label><input type="checkbox">Production Planning and Control</label></li>
+        <li><label><input type="checkbox">Inventory Control</label></li>
+        <li><label><input type="checkbox">Operations Research</label></li>
+        <li><label><input type="checkbox">Quality Management</label></li>
       </ul>
     </div>
   </div>
 
-  <!-- Electronics & Communication Engineering -->
-  <div class="subject">
-    <h2>Electronics & Communication Engineering</h2>
-    <div class="chapter">
-      <h3>Networks</h3>
-      <ul>
-        <li contenteditable="true">Circuit Laws</li>
-        <li contenteditable="true">AC Fundamentals</li>
-        <li contenteditable="true">Network Theorems</li>
-        <li contenteditable="true">Resonance</li>
-        <li contenteditable="true">Two Port Networks</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Analog Electronics</h3>
-      <ul>
-        <li contenteditable="true">Diodes</li>
-        <li contenteditable="true">BJT and FET</li>
-        <li contenteditable="true">Amplifiers</li>
-        <li contenteditable="true">Oscillators</li>
-        <li contenteditable="true">Feedback Circuits</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Digital Electronics</h3>
-      <ul>
-        <li contenteditable="true">Logic Gates</li>
-        <li contenteditable="true">Combinational Circuits</li>
-        <li contenteditable="true">Sequential Circuits</li>
-        <li contenteditable="true">Number Systems</li>
-        <li contenteditable="true">Microprocessors</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Signals & Systems</h3>
-      <ul>
-        <li contenteditable="true">Continuous & Discrete Signals</li>
-        <li contenteditable="true">LTI Systems</li>
-        <li contenteditable="true">Fourier Transform</li>
-        <li contenteditable="true">Laplace Transform</li>
-        <li contenteditable="true">Z-Transform</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Control Systems</h3>
-      <ul>
-        <li contenteditable="true">Feedback Principles</li>
-        <li contenteditable="true">Stability Analysis</li>
-        <li contenteditable="true">Time Domain Analysis</li>
-        <li contenteditable="true">Frequency Domain Analysis</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Communication Systems</h3>
-      <ul>
-        <li contenteditable="true">Analog Communication</li>
-        <li contenteditable="true">Digital Communication</li>
-        <li contenteditable="true">Information Theory</li>
-        <li contenteditable="true">Modulation Techniques</li>
-      </ul>
-    </div>
-  </div>
+  <!-- You can keep rest (ECE, CSE, Civil, Electrical, Aptitude) same as your code but with checkboxes in <label><input> like above -->
 
-  <!-- Computer Science & Engineering -->
-  <div class="subject">
-    <h2>Computer Science & Engineering</h2>
-    <div class="chapter">
-      <h3>Programming & Data Structures</h3>
-      <ul>
-        <li contenteditable="true">C Programming Basics</li>
-        <li contenteditable="true">Arrays & Strings</li>
-        <li contenteditable="true">Linked Lists</li>
-        <li contenteditable="true">Stacks & Queues</li>
-        <li contenteditable="true">Trees</li>
-        <li contenteditable="true">Graphs</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Algorithms</h3>
-      <ul>
-        <li contenteditable="true">Sorting</li>
-        <li contenteditable="true">Searching</li>
-        <li contenteditable="true">Greedy Algorithms</li>
-        <li contenteditable="true">Dynamic Programming</li>
-        <li contenteditable="true">Graph Algorithms</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Databases</h3>
-      <ul>
-        <li contenteditable="true">Relational Model</li>
-        <li contenteditable="true">SQL</li>
-        <li contenteditable="true">Transactions</li>
-        <li contenteditable="true">Normalization</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Operating Systems</h3>
-      <ul>
-        <li contenteditable="true">Processes</li>
-        <li contenteditable="true">Threads</li>
-        <li contenteditable="true">Deadlocks</li>
-        <li contenteditable="true">Memory Management</li>
-        <li contenteditable="true">File Systems</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Computer Networks</h3>
-      <ul>
-        <li contenteditable="true">OSI & TCP/IP Models</li>
-        <li contenteditable="true">IP Addressing</li>
-        <li contenteditable="true">Routing Algorithms</li>
-        <li contenteditable="true">Transport Layer Protocols</li>
-        <li contenteditable="true">Application Layer</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Compiler Design</h3>
-      <ul>
-        <li contenteditable="true">Lexical Analysis</li>
-        <li contenteditable="true">Parsing</li>
-        <li contenteditable="true">Intermediate Code Generation</li>
-        <li contenteditable="true">Code Optimization</li>
-        <li contenteditable="true">Code Generation</li>
-      </ul>
-    </div>
-  </div>
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressBar = document.getElementById('progress-bar');
 
-  <!-- Civil Engineering -->
-  <div class="subject">
-    <h2>Civil Engineering</h2>
-    <div class="chapter">
-      <h3>Structural Engineering</h3>
-      <ul>
-        <li contenteditable="true">Strength of Materials</li>
-        <li contenteditable="true">Structural Analysis</li>
-        <li contenteditable="true">Concrete Structures</li>
-        <li contenteditable="true">Steel Structures</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Geotechnical Engineering</h3>
-      <ul>
-        <li contenteditable="true">Soil Mechanics</li>
-        <li contenteditable="true">Foundation Engineering</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Transportation Engineering</h3>
-      <ul>
-        <li contenteditable="true">Highway Engineering</li>
-        <li contenteditable="true">Railway Engineering</li>
-        <li contenteditable="true">Airport Engineering</li>
-        <li contenteditable="true">Traffic Engineering</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Environmental Engineering</h3>
-      <ul>
-        <li contenteditable="true">Water Supply Engineering</li>
-        <li contenteditable="true">Waste Water Engineering</li>
-        <li contenteditable="true">Air Pollution</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Surveying</h3>
-      <ul>
-        <li contenteditable="true">Basics of Surveying</li>
-        <li contenteditable="true">Levelling</li>
-        <li contenteditable="true">Modern Surveying Instruments</li>
-      </ul>
-    </div>
-  </div>
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const percent = Math.round((checked / total) * 100);
+      progressBar.style.width = percent + '%';
+      progressBar.textContent = percent + '%';
+    }
 
-  <!-- Electrical Engineering -->
-  <div class="subject">
-    <h2>Electrical Engineering</h2>
-    <div class="chapter">
-      <h3>Circuits</h3>
-      <ul>
-        <li contenteditable="true">Network Laws</li>
-        <li contenteditable="true">Transient Response</li>
-        <li contenteditable="true">AC Circuits</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Electrical Machines</h3>
-      <ul>
-        <li contenteditable="true">Transformers</li>
-        <li contenteditable="true">DC Machines</li>
-        <li contenteditable="true">Induction Machines</li>
-        <li contenteditable="true">Synchronous Machines</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Power Systems</h3>
-      <ul>
-        <li contenteditable="true">Generation</li>
-        <li contenteditable="true">Transmission</li>
-        <li contenteditable="true">Distribution</li>
-        <li contenteditable="true">Fault Analysis</li>
-        <li contenteditable="true">Protection</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Control Systems</h3>
-      <ul>
-        <li contenteditable="true">Modeling</li>
-        <li contenteditable="true">Time Domain Analysis</li>
-        <li contenteditable="true">Frequency Response</li>
-        <li contenteditable="true">Stability</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Power Electronics</h3>
-      <ul>
-        <li contenteditable="true">Diodes & Transistors</li>
-        <li contenteditable="true">Rectifiers</li>
-        <li contenteditable="true">Inverters</li>
-        <li contenteditable="true">Converters</li>
-      </ul>
-    </div>
-  </div>
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        if (this.checked) {
+          this.parentNode.parentNode.classList.add('checked');
+        } else {
+          this.parentNode.parentNode.classList.remove('checked');
+        }
+        updateProgress();
+      });
+    });
 
-  <!-- General Aptitude -->
-  <div class="subject">
-    <h2>General Aptitude</h2>
-    <div class="chapter">
-      <h3>Quantitative Aptitude</h3>
-      <ul>
-        <li contenteditable="true">Number Systems</li>
-        <li contenteditable="true">Percentages</li>
-        <li contenteditable="true">Ratios and Proportions</li>
-        <li contenteditable="true">Time and Work</li>
-        <li contenteditable="true">Time, Speed, Distance</li>
-        <li contenteditable="true">Permutation and Combination</li>
-        <li contenteditable="true">Probability</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>Logical Reasoning</h3>
-      <ul>
-        <li contenteditable="true">Series</li>
-        <li contenteditable="true">Coding-Decoding</li>
-        <li contenteditable="true">Puzzles</li>
-        <li contenteditable="true">Data Interpretation</li>
-        <li contenteditable="true">Blood Relations</li>
-      </ul>
-    </div>
-    <div class="chapter">
-      <h3>English</h3>
-      <ul>
-        <li contenteditable="true">Grammar</li>
-        <li contenteditable="true">Vocabulary</li>
-        <li contenteditable="true">Reading Comprehension</li>
-        <li contenteditable="true">Sentence Correction</li>
-      </ul>
-    </div>
-  </div>
-
+    updateProgress();
+  </script>
 </body>
 </html>

@@ -4,13 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lekhpal Exam – Preparation Tracker</title>
-  <link rel="stylesheet" href="chsl.css">
-  <script src="chsl.js" defer></script>
- 
+  <style>
+    /* Dark Theme */
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    /* Cross line when checked */
+    input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      margin: 20px 0;
+    }
+
+    .progress-bar {
+      height: 25px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 25px;
+      color: white;
+      font-size: 14px;
+      transition: width 0.3s ease;
+    }
+
+    .subject {
+      margin-bottom: 30px;
+      padding: 15px;
+      background: #1e1e1e;
+      border-radius: 8px;
+    }
+
+    .chapter {
+      margin-left: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Lekhpal Exam – Preparation Tracker</h1>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill">0%</div>
+      </div>
+    </div>
 
     <!-- General Hindi -->
     <div class="subject">
@@ -85,5 +164,23 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressFill = document.getElementById('progress-fill');
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const percent = Math.round((checked / total) * 100);
+      progressFill.style.width = percent + '%';
+      progressFill.textContent = percent + '%';
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+
+    // Initialize on load
+    updateProgress();
+  </script>
 </body>
 </html>

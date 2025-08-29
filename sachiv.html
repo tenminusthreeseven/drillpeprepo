@@ -4,11 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sachiv Exam – Preparation Tracker</title>
-  <link rel="stylesheet" href="chsl.css">
-  <script src="chsl.js" defer></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #ffffff;
+    }
+    .subject, .chapter {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: #1e1e1e;
+    }
+    ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+    li {
+      margin: 5px 0;
+      transition: color 0.3s, text-decoration 0.3s;
+    }
+    li.checked {
+      text-decoration: line-through;
+      color: #888;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .progress-container {
+      margin: 20px 0;
+    }
+    .progress-bar {
+      width: 100%;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #76ff03, #00e5ff);
+      transition: width 0.3s ease-in-out;
+    }
+    .progress-text {
+      text-align: right;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
   <h1>Sachiv Exam – Preparation Tracker</h1>
+
+  <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-text">0%</div>
+  </div>
 
   <!-- General Hindi -->
   <div class="subject">
@@ -152,5 +211,49 @@
     </div>
   </div>
 
+  <script>
+    const allCheckboxes = document.querySelectorAll("input[type='checkbox']");
+    const progressFill = document.querySelector(".progress-fill");
+    const progressText = document.querySelector(".progress-text");
+
+    function updateProgress() {
+      const total = document.querySelectorAll("li input[type='checkbox']").length;
+      const checked = document.querySelectorAll("li input[type='checkbox']:checked").length;
+      const percent = Math.round((checked / total) * 100);
+      progressFill.style.width = percent + "%";
+      progressText.textContent = percent + "%";
+    }
+
+    allCheckboxes.forEach(cb => {
+      cb.addEventListener("change", () => {
+        const li = cb.closest("li");
+        if (li) {
+          li.classList.toggle("checked", cb.checked);
+        }
+
+        // Subject checkbox selects all under it
+        if (cb.classList.contains("subject-checkbox")) {
+          const subject = cb.closest(".subject");
+          subject.querySelectorAll("input[type='checkbox']").forEach(inner => {
+            inner.checked = cb.checked;
+            if (inner.closest("li")) inner.closest("li").classList.toggle("checked", cb.checked);
+          });
+        }
+
+        // Chapter checkbox selects all under it
+        if (cb.classList.contains("chapter-checkbox")) {
+          const chapter = cb.closest(".chapter");
+          chapter.querySelectorAll("li input[type='checkbox']").forEach(inner => {
+            inner.checked = cb.checked;
+            inner.closest("li").classList.toggle("checked", cb.checked);
+          });
+        }
+
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+  </script>
 </body>
 </html>

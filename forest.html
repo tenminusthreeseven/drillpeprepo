@@ -4,11 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indian Forest Service – Preparation Tracker</title>
-  <link rel="stylesheet" href="ifs.css">
-  <script src="ifs.js" defer></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00e676;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #81d4fa;
+    }
+
+    h3 {
+      color: #ffcc80;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 5px 0;
+      cursor: pointer;
+    }
+
+    li input {
+      margin-right: 10px;
+    }
+
+    li.checked {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    /* Progress bar container */
+    .progress-container {
+      width: 100%;
+      background-color: #333;
+      border-radius: 10px;
+      margin: 20px 0;
+      height: 25px;
+    }
+
+    /* Progress bar fill */
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #00e676;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 25px;
+      color: black;
+      font-weight: bold;
+      transition: width 0.3s ease;
+    }
+
+    .subject {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Indian Forest Service – Preparation Tracker</h1>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar">0%</div>
+  </div>
 
   <!-- General English -->
   <div class="subject">
@@ -16,10 +90,10 @@
     <div class="chapter">
       <h3>Writing and Composition</h3>
       <ul>
-        <li contenteditable="true">Essay Writing</li>
-        <li contenteditable="true">Precis Writing</li>
-        <li contenteditable="true">Comprehension</li>
-        <li contenteditable="true">Grammar and Usage</li>
+        <li><input type="checkbox"> Essay Writing</li>
+        <li><input type="checkbox"> Precis Writing</li>
+        <li><input type="checkbox"> Comprehension</li>
+        <li><input type="checkbox"> Grammar and Usage</li>
       </ul>
     </div>
   </div>
@@ -30,18 +104,18 @@
     <div class="chapter">
       <h3>Current Events</h3>
       <ul>
-        <li contenteditable="true">National and International Importance</li>
-        <li contenteditable="true">Environment and Ecology</li>
-        <li contenteditable="true">Science & Technology</li>
+        <li><input type="checkbox"> National and International Importance</li>
+        <li><input type="checkbox"> Environment and Ecology</li>
+        <li><input type="checkbox"> Science & Technology</li>
       </ul>
     </div>
     <div class="chapter">
       <h3>General Awareness</h3>
       <ul>
-        <li contenteditable="true">Indian Polity and Governance</li>
-        <li contenteditable="true">Indian Economy</li>
-        <li contenteditable="true">Geography</li>
-        <li contenteditable="true">History of India</li>
+        <li><input type="checkbox"> Indian Polity and Governance</li>
+        <li><input type="checkbox"> Indian Economy</li>
+        <li><input type="checkbox"> Geography</li>
+        <li><input type="checkbox"> History of India</li>
       </ul>
     </div>
   </div>
@@ -52,11 +126,11 @@
     <div class="chapter">
       <h3>Forestry (example)</h3>
       <ul>
-        <li contenteditable="true">Silviculture – General</li>
-        <li contenteditable="true">Silviculture – Systems</li>
-        <li contenteditable="true">Forest Management and Mensuration</li>
-        <li contenteditable="true">Agroforestry and Social Forestry</li>
-        <li contenteditable="true">Forest Protection and Wildlife Biology</li>
+        <li><input type="checkbox"> Silviculture – General</li>
+        <li><input type="checkbox"> Silviculture – Systems</li>
+        <li><input type="checkbox"> Forest Management and Mensuration</li>
+        <li><input type="checkbox"> Agroforestry and Social Forestry</li>
+        <li><input type="checkbox"> Forest Protection and Wildlife Biology</li>
       </ul>
     </div>
   </div>
@@ -67,11 +141,11 @@
     <div class="chapter">
       <h3>Agriculture (example)</h3>
       <ul>
-        <li contenteditable="true">Crop Production and Management</li>
-        <li contenteditable="true">Soil Science and Agronomy</li>
-        <li contenteditable="true">Plant Physiology and Genetics</li>
-        <li contenteditable="true">Horticulture</li>
-        <li contenteditable="true">Agricultural Economics and Extension</li>
+        <li><input type="checkbox"> Crop Production and Management</li>
+        <li><input type="checkbox"> Soil Science and Agronomy</li>
+        <li><input type="checkbox"> Plant Physiology and Genetics</li>
+        <li><input type="checkbox"> Horticulture</li>
+        <li><input type="checkbox"> Agricultural Economics and Extension</li>
       </ul>
     </div>
   </div>
@@ -82,13 +156,39 @@
     <div class="chapter">
       <h3>Interview Preparation</h3>
       <ul>
-        <li contenteditable="true">Knowledge of Optional Subjects</li>
-        <li contenteditable="true">Awareness of Environmental Issues</li>
-        <li contenteditable="true">Current Affairs</li>
-        <li contenteditable="true">General Mental Ability</li>
-        <li contenteditable="true">Leadership and Communication Skills</li>
+        <li><input type="checkbox"> Knowledge of Optional Subjects</li>
+        <li><input type="checkbox"> Awareness of Environmental Issues</li>
+        <li><input type="checkbox"> Current Affairs</li>
+        <li><input type="checkbox"> General Mental Ability</li>
+        <li><input type="checkbox"> Leadership and Communication Skills</li>
       </ul>
     </div>
   </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressBar = document.getElementById('progress-bar');
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const percent = Math.round((checked / total) * 100);
+      progressBar.style.width = percent + '%';
+      progressBar.textContent = percent + '%';
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          cb.parentElement.classList.add('checked');
+        } else {
+          cb.parentElement.classList.remove('checked');
+        }
+        updateProgress();
+      });
+    });
+
+    updateProgress(); // initialize
+  </script>
 </body>
 </html>
