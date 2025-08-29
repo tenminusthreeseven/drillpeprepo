@@ -86,6 +86,7 @@ nav button.active { color: #111; background: #00ffcc; }
   box-shadow: 0 10px 25px rgba(0,0,0,.25);
   transition: transform .3s, box-shadow .3s;
   color: #1a1a1a;
+  text-size-adjust: 24px;
 }
 .text-box:nth-child(1) {
   left: 0; top: 0; z-index: 1;
@@ -106,12 +107,53 @@ nav button.active { color: #111; background: #00ffcc; }
   box-shadow: 0 12px 35px rgba(0,255,204,.4);
   z-index: 10;
 }
+.text-box:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.12);
+}
 
-/* =======================
-   Exam Section (CARDS)
-   Works even if some .exam-card
-   are outside .exam-grid
-======================= */
+/* Animated gradient border glow */
+.text-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, #00ff94, #06ce3b, #00c6ff, #f1f0f6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                 linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Paragraph styling */
+.text-box p {
+  font-family: 'Lato', sans-serif; /* Clean, professional font */
+  font-size: 18px;                  /* Comfortable reading size */
+  line-height: 1.6;                 /* Good spacing between lines */
+  font-weight: 600;                  /* Slightly bolder for clarity */
+  text-align: justify;               /* Align text neatly */
+  color: #fdfffd;                    /* Lime green text */
+  -webkit-text-stroke: 0.5px black; /* Subtle black outline */
+  text-stroke: 0.5px black;         /* For non-webkit browsers */
+  padding: 8px 12px;                 /* Slight padding for readability */
+  margin-bottom: 16px;               /* Space between paragraphs */
+  transition: all 0.3s ease;         /* Smooth hover effects if needed */
+}
+
+.text-box p:hover {
+  transform: translateY(-2px);       /* Subtle lift on hover */
+}
+
+
+
 .exam-section {
   max-width: 1300px;
   margin: 140px auto 0;
