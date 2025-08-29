@@ -230,11 +230,26 @@ nav button.active { color: #111; background: #00ffcc; }
 }
 
 
-.see-all-container{
-  text-align: center;
-  text-decoration-color: white;
+/* Container to center the button */
+.see-all-container {
+    text-align: center;        /* Center the button horizontally */
+    margin: 20px 0;            /* Space above and below */
 }
-.see-all-btn{
-  display:inline-block;
-  border-color: #04a830;
+
+/* Styling the button */
+.see-all-btn {
+    display: inline-block;     /* Makes padding and margin work properly */
+    padding: 12px 24px;        /* Vertical and horizontal padding */
+    font-size: 16px;           /* Button text size */
+    color: #fff;               /* Text color */
+    background-color: #007bff; /* Button background color */
+    text-decoration: none;     /* Remove underline from link */
+    border-radius: 6px;        /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth hover effect */
+}
+
+/* Hover effect */
+.see-all-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
 }
