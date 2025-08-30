@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Exams - DrillPep</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .exam-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .exam-card {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 15px;
+      background: #000000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .exam-card h2 {
+      margin-bottom: 10px;
+    }
+    .chapters label {
+      display: block;
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 My Exams</h1>
+
+  <div class="exam-list">
+    <!-- GATE Example -->
+    <div class="exam-card">
+      <h2>GATE</h2>
+      <p>Track your progress by ticking completed chapters:</p>
+      <div class="chapters">
+        <label><input type="checkbox"> Programming & Data Structures</label>
+        <label><input type="checkbox"> Algorithms</label>
+        <label><input type="checkbox"> Database Management Systems</label>
+      </div>
+    </div>
+
+    <!-- UPSC Example -->
+    <div class="exam-card">
+      <h2>UPSC</h2>
+      <p>Track your progress by ticking completed chapters:</p>
+      <div class="chapters">
+        <label><input type="checkbox"> History</label>
+        <label><input type="checkbox"> Geography</label>
+        <label><input type="checkbox"> Polity & Governance</label>
+      </div>
+    </div>
+
+    <!-- SSC Example -->
+    <div class="exam-card">
+      <h2>SSC CGL</h2>
+      <p>Track your progress by ticking completed chapters:</p>
+      <div class="chapters">
+        <label><input type="checkbox"> General Intelligence & Reasoning</label>
+        <label><input type="checkbox"> Quantitative Aptitude</label>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Save progress in localStorage so it stays after refresh
+    const checkboxes = document.querySelectorAll("input[type=checkbox]");
+    checkboxes.forEach((checkbox, i) => {
+      // Load saved state
+      if(localStorage.getItem("chapter" + i) === "true") {
+        checkbox.checked = true;
+      }
+      // Save state when clicked
+      checkbox.addEventListener("change", () => {
+        localStorage.setItem("chapter" + i, checkbox.checked);
+      });
+    });
+  </script>
+
+</body>
+</html>

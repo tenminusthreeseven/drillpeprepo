@@ -1,30 +1,79 @@
 <html>
-    <head>
-       <title> signup page</title> 
-       <link rel="stylesheet" href="signup.css">
-    </head>
-    <body>
-        <div class="login-container">
-            <h2>signup</h2>
-            <form>
-                <div class="input-group">
-                    <label for="name">Name</label>
-                     <input type="name" name ="name" placeholder="Enter your name" required>
-
-                </div>
-                <div class="input-group">
-                    <label for ="email">email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-
-                </div>
-                <div class="input-group">
-                    <label for="password">password</label>
-                    <input type="password" id="password" name ="password" placeholder="Enter your password" required>
-
-
-                </div>
-                <button type = "submit">singup</button>
-            </form>
+  <head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <div class="input-group">
+          <label for="username">Name</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your name"
+            required
+          />
         </div>
-    </body>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit">Signup</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const res = await fetch("http://localhost:5000/api/auth/signup", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ username, email, password }),
+            });
+
+            if (res.ok) {
+              alert("Signup successful! You can now login.");
+              window.location.href = "login.html"; // redirect after signup
+            } else {
+              const data = await res.text();
+              alert("Signup failed: " + data);
+            }
+          } catch (err) {
+            alert("Error: " + err.message);
+          }
+        });
+    </script>
+  </body>
 </html>

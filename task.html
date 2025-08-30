@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Tasks</title>
+  <link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+  <div class="tasks-container">
+    <h2>My Tasks</h2>
+
+    <div id="taskForm">
+      <input type="text" id="taskInput" placeholder="Enter new task">
+      <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <p id="message"></p>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:5000/api/tasks";
+    const token = localStorage.getItem("token");
+    const taskList = document.getElementById("taskList");
+    const message = document.getElementById("message");
+
+    // If not logged in, redirect to login page
+    if (!token) {
+      window.location.href = "login.html";
+    }
+
+    // Fetch tasks from backend
+    async function fetchTasks() {
+      try {
+        const res = await fetch(API_URL, {
+          headers: {
+            "Authorization": "Bearer " + token
+          }
+        });
+
+        const data = await res.json();
+        taskList.innerHTML = "";
+
+        if (res.ok) {
+          data.forEach(task => {
+            const li = document.createElement("li");
+            li.textContent = task.title;
+            taskList.appendChild(li);
+          });
+        } else {
+          message.textContent = data.message || "Failed to load tasks.";
+        }
+      } catch (err) {
+        console.error(err);
+        message.textContent = "Error fetching tasks.";
+      }
+    }
+
+    // Add new task
+    document.getElementById("addTaskBtn").addEventListener("click", async () => {
+      const taskTitle = document.getElementById("taskInput").value;
+      if (!taskTitle) return;
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          body: JSON.stringify({ title: taskTitle })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          document.getElementById("taskInput").value = "";
+          fetchTasks(); // refresh list
+        } else {
+          message.textContent = data.message || "Failed to add task.";
+        }
+      } catch (err) {
+        console.error(err);
+        message.textContent = "Error adding task.";
+      }
+    });
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+
+    // Load tasks on page load
+    fetchTasks();
+  </script>
+</body>
+</html>
