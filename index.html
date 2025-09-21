@@ -4,7 +4,346 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DrillPep</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <style>
+    /* =======================
+       Global + Header
+    ======================= */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: #000;
+      background-image: radial-gradient(white 0.7px, transparent 0.1px);
+      background-size: 20px 20px;
+    }
+
+    header {
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(233, 196, 74, 0.1);
+    }
+
+    header h1 { margin: 0; font-size: 1.3rem; color: #00ffcc; }
+
+    nav { display: flex; gap: 12px; }
+    nav button {
+      cursor: pointer;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      transition: .3s;
+    }
+    nav button:hover {
+      color: #00ffcc; background: #1a1a1a;
+      box-shadow: 0 0 12px rgba(0,255,204,.6);
+      transform: translateY(-3px);
+    }
+    nav button.active { color: #111; background: #00ffcc; }
+
+    /* =======================
+       Hero
+    ======================= */
+    .hero {
+      text-align: center;
+      padding: 100px 24px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 { font-size: 3rem; margin: 0 0 14px; }
+    .hero h1 span {
+      background: linear-gradient(90deg, #06ce3b, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { color: #aaa; font-size: 1.1rem; margin: 0 0 32px; line-height: 1.6; }
+    .hero-buttons { display: flex; justify-content: center; gap: 16px; }
+    .hero-buttons button {
+      cursor: pointer; padding: 12px 24px; font-weight: 600;
+      border: none; border-radius: 10px; transition: .3s;
+    }
+    .hero-buttons .primary { background: #06ce3b; color: #111; box-shadow: 0 6px 20px rgba(6,206,59,.35); }
+    .hero-buttons .primary:hover { background: #04a830; transform: translateY(-3px); }
+    .hero-buttons .secondary { background: transparent; border: 2px solid #00ffcc; color: #00ffcc; }
+    .hero-buttons .secondary:hover { background: #00ffcc; color: #111; transform: translateY(-3px); }
+
+    /* =======================
+       Stacked Intro Boxes - UPDATED
+    ======================= */
+    .box-stack {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      height: auto;
+      min-height: 500px;
+      margin: 120px auto 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .text-box {
+      position: absolute;
+      width: 300px;
+      height: 400px;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      transition: transform .3s, box-shadow .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .text-box:nth-child(1) {
+      left: 0; top: 0; z-index: 1;
+      background: linear-gradient(135deg, #06ce3b, #00ffcc);
+    }
+    .text-box:nth-child(2) {
+      left: 50%; top: 50px; z-index: 2;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #7b68ee, #00ffcc);
+    }
+    .text-box:nth-child(3) {
+      right: 0; top: 100px; z-index: 3;
+      background: linear-gradient(135deg, #ff8c00, #00ffcc);
+    }
+    
+    .text-box:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,255,204,.4);
+      z-index: 10;
+    }
+    
+    /* Text styling */
+    .text-box p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: 600;
+      text-align: center;
+      color: #000;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+      margin: 0;
+      padding: 15px;
+    }
+    
+    /* Animated gradient border glow */
+    .text-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, #00ff94, #06ce3b, #00c6ff, #f1f0f6);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                 linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+          mask-composite: exclude;
+      pointer-events: none;
+      animation: borderGlow 6s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* =======================
+       Exam Section
+    ======================= */
+    .exam-section {
+      max-width: 1300px;
+      margin: 140px auto 0;
+      padding: 60px 24px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .exam-section > h2,
+    .exam-section > p {
+      flex: 0 0 100%;
+      margin: 0;
+    }
+    .exam-section > h2 {
+      font-size: 2.4rem; margin-bottom: 8px;
+    }
+    .exam-section > p {
+      color: #aaa; font-size: 1.05rem; margin-bottom: 34px;
+    }
+
+    .exam-grid { display: contents; }
+
+    .exam-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 14px;
+      padding: 22px;
+      width: 320px;
+      box-shadow: 0 6px 15px rgba(0,0,0,.4);
+      text-align: left;
+      transition: transform .3s, box-shadow .3s;
+      flex: 0 1 320px;
+    }
+    .exam-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,255,150,.3);
+    }
+
+    .exam-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .exam-header h3 { margin: 0 10px; font-size: 1.25rem; color: #fff; }
+    .exam-header .icon { font-size: 1.5rem; }
+
+    .badge {
+      padding: 4px 10px; border-radius: 8px;
+      font-size: .8rem; font-weight: 700;
+    }
+    .badge.hard { background: #ff4c4c; color: #fff; }
+    .badge.medium { background: #e1b800; color: #111; }
+
+    .exam-card p { color: #ccc; margin: 10px 0 12px; }
+    .exam-card ul {
+      margin: 0 0 10px; padding-left: 18px; color: #bbb;
+    }
+    .subjects {
+      margin: 12px 0 16px; display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .subjects span {
+      background: #222; color: #fff; font-size: .85rem;
+      padding: 5px 10px; border-radius: 6px;
+    }
+
+    .start-btn {
+      display: block; width: 100%;
+      padding: 12px; font-size: 1rem; font-weight: 600;
+      background: #fff;
+      color: #111;
+      border: none; border-radius: 8px;
+      cursor: pointer; transition: .25s;
+    }
+    .start-btn:hover { background: #f0f0f0; }
+    .start-btn.active {
+      background: linear-gradient(135deg, #06ce3b, #00ffcc);
+      color: #fff;
+    }
+
+    .see-all-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .see-all-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .see-all-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    /* =======================
+       Responsive Design
+    ======================= */
+    @media (max-width: 1100px) {
+      .box-stack { width: 90%; }
+      .text-box { width: 280px; height: 380px; }
+    }
+
+    @media (max-width: 900px) {
+      .box-stack {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 30px;
+      }
+      
+      .text-box {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin-bottom: 20px;
+      }
+      
+      .text-box:hover {
+        transform: translateY(-5px) !important;
+      }
+      
+      .hero h1 { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-buttons { flex-direction: column; }
+      
+      .exam-card { 
+        flex: 0 1 100%;
+        max-width: 400px;
+      }
+      
+      .text-box {
+        width: 85%;
+        height: auto;
+        min-height: 250px;
+      }
+      
+      .text-box p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .hero {
+        padding: 70px 15px 40px;
+      }
+      
+      .hero h1 { font-size: 1.8rem; }
+      
+      .text-box {
+        width: 95%;
+        padding: 20px;
+      }
+      
+      .text-box p {
+        font-size: 16px;
+      }
+      
+      .exam-section {
+        padding: 40px 15px;
+      }
+      
+      .exam-section > h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +366,6 @@
       <div class="hero-buttons">
         <button onclick="window.location.href='exams.html'" class="primary">Start Preparing</button>
        <button onclick="window.location.href='myexams.html'" class="primary">Your Exams</button>
-       
       </div>
     </section>
 
@@ -54,8 +392,6 @@
           smoother, smarter, and more effective!
         </p>
       </div>
-
-     
     </div>
 
     <!-- Exam Section -->
@@ -123,17 +459,10 @@
             <span>General Intelligence & Reasoning</span>
             <span>Quantitative Aptitude</span>
           </div>
-          <button class="start-btn" onclick="window.location.href='ssccgl.html'">  Start Preparation</button>
+          <button class="start-btn" onclick="window.location.href='ssccgl.html'">Start Preparation</button>
         </div>
-      </div>
-      
 
-
-
-
-
-
-      <div class="exam-card">
+        <div class="exam-card">
           <div class="exam-header">
             <span class="icon">🏛</span>
             <h3>ISRO</h3>
@@ -152,8 +481,6 @@
           </div>
           <button class="start-btn" onclick="window.location.href='isro.html'">Start Preparation</button>
         </div>
-
-
 
         <div class="exam-card">
           <div class="exam-header">
@@ -175,7 +502,6 @@
           <button class="start-btn" onclick="window.location.href='nda.html'">Start Preparation</button>
         </div>
 
-
         <div class="exam-card">
           <div class="exam-header">
             <span class="icon">🏛</span>
@@ -195,26 +521,26 @@
           </div>
           <button class="start-btn" onclick="window.location.href='sscmts.html'">Start Preparation</button>
         </div>
-    </section>
+      </div>
+      
       <div class="see-all-container">
         <a href="exams.html" class="see-all-btn">See All Exams</a>
       </div>
-    </div>
+    </section>
   </main>
-  </main>
-<script>
-  // Select all start buttons
-  const buttons = document.querySelectorAll('.start-btn');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active from all buttons (only one green at a time)
-      buttons.forEach(b => b.classList.remove('active'));
-      // Add active to the clicked one
-      btn.classList.add('active');
+  <script>
+    // Select all start buttons
+    const buttons = document.querySelectorAll('.start-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons (only one green at a time)
+        buttons.forEach(b => b.classList.remove('active'));
+        // Add active to the clicked one
+        btn.classList.add('active');
+      });
     });
-  });
-</script>
-  <script src="drills.js"></script>
+  </script>
 </body>
 </html>
