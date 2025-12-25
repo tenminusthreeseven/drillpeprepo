@@ -3,1697 +3,222 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CUET PG – Complete Syllabus Tracker</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* =======================
-       CSS Variables & Reset
-    ======================= */
-    :root {
-      --primary: #4f46e5;
-      --primary-dark: #4338ca;
-      --secondary: #06d6a0;
-      --accent: #ff6b6b;
-      --dark: #0f172a;
-      --dark-light: #1e293b;
-      --dark-lighter: #334155;
-      --light: #f8fafc;
-      --text: #e2e8f0;
-      --text-light: #94a3b8;
-      --text-lighter: #cbd5e1;
-      --card-bg: #1e293b;
-      --border: #475569;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --shadow: rgba(0, 0, 0, 0.3);
-      --transition: all 0.3s ease;
-      --border-radius: 12px;
-      --box-shadow: 0 8px 25px var(--shadow);
-      --gradient-primary: linear-gradient(135deg, #4f46e5, #7c3aed);
-      --gradient-success: linear-gradient(135deg, #06d6a0, #10b981);
-      --gradient-warning: linear-gradient(135deg, #f59e0b, #f97316);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-    }
-
-    /* =======================
-       Utility Classes
-    ======================= */
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .section {
-      padding: 40px 0;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .gradient-text {
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      font-weight: 600;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-      font-size: 14px;
-      gap: 8px;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--secondary);
-      border: 2px solid var(--secondary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--secondary);
-      color: var(--dark);
-      transform: translateY(-2px);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-english { background: #3b82f6; color: white; }
-    .badge-polity { background: #8b5cf6; color: white; }
-    .badge-math { background: #10b981; color: white; }
-    .badge-science { background: #ef4444; color: white; }
-    .badge-economics { background: #f59e0b; color: white; }
-    .badge-language { background: #06b6d4; color: white; }
-    .badge-general { background: #64748b; color: white; }
-
-    /* =======================
-       Header & Navigation
-    ======================= */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(71, 85, 105, 0.3);
-      padding: 15px 0;
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
-
-    .logo span {
-      color: var(--secondary);
-    }
-
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .stats-display {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 0.9rem;
-    }
-
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .stat-value {
-      font-weight: 700;
-      color: var(--secondary);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* =======================
-       Hero Section
-    ======================= */
-    .hero {
-      padding: 60px 0 40px;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-content {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      line-height: 1.2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-bottom: 30px;
-    }
-
-    /* =======================
-       Progress Overview
-    ======================= */
-    .progress-overview {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      margin-bottom: 40px;
-      border: 1px solid var(--border);
-      box-shadow: var(--box-shadow);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .progress-header h2 {
-      font-size: 1.5rem;
-    }
-
-    .progress-stats {
-      display: flex;
-      gap: 25px;
-    }
-
-    .progress-stat {
-      text-align: center;
-    }
-
-    .progress-stat-value {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--secondary);
-    }
-
-    .progress-stat-label {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-top: 5px;
-    }
-
-    .overall-progress-bar {
-      height: 12px;
-      background: var(--dark-lighter);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
-
-    .overall-progress-fill {
-      height: 100%;
-      background: var(--gradient-primary);
-      border-radius: 10px;
-      transition: width 1s ease;
-      width: 0%;
-    }
-
-    .subject-progress {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-    .subject-progress-item {
-      background: var(--dark-light);
-      padding: 15px;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
-    }
-
-    .subject-name {
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .subject-progress-bar {
-      height: 6px;
-      background: var(--dark-lighter);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .subject-progress-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.5s ease;
-    }
-
-    /* =======================
-       Syllabus Sections
-    ======================= */
-    .syllabus-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 25px;
-      margin-bottom: 50px;
-    }
-
-    .subject-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: var(--transition);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .subject-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      border-color: var(--primary);
-    }
-
-    .subject-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .subject-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .subject-icon {
-      font-size: 1.5rem;
-      color: var(--secondary);
-    }
-
-    .subject-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    .subject-content {
-      padding: 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .unit {
-      margin-bottom: 20px;
-    }
-
-    .unit-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--secondary);
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(71, 85, 105, 0.3);
-    }
-
-    .topics-list {
-      list-style: none;
-    }
-
-    .topic-item {
-      padding: 10px 0;
-      border-bottom: 1px dashed rgba(71, 85, 105, 0.2);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .topic-item:last-child {
-      border-bottom: none;
-    }
-
-    .topic-checkbox {
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-
-    .topic-text {
-      flex-grow: 1;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: var(--text-lighter);
-    }
-
-    .topic-checkbox input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--secondary);
-    }
-
-    .subject-actions {
-      padding: 15px 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    .subject-progress-small {
-      font-size: 0.85rem;
-      color: var(--text-light);
-    }
-
-    .subject-progress-small span {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    /* =======================
-       Quick Actions & Filters
-    ======================= */
-    .quick-actions {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      margin-bottom: 40px;
-      border: 1px solid var(--border);
-    }
-
-    .quick-actions h3 {
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-
-    .action-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .action-btn {
-      padding: 8px 16px;
-      background: var(--dark-light);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.9rem;
-    }
-
-    .action-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-    }
-
-    .filters {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 8px 16px;
-      background: var(--dark-light);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.85rem;
-    }
-
-    .filter-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-    }
-
-    /* =======================
-       Footer
-    ======================= */
-    footer {
-      background: var(--dark-light);
-      padding: 50px 0 30px;
-      border-top: 1px solid var(--border);
-      margin-top: 60px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .footer-section h3 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-      color: var(--text-light);
-      font-size: 0.9rem;
-      margin-top: 40px;
-    }
-
-    /* =======================
-       Responsive Design
-    ======================= */
-    @media (max-width: 1200px) {
-      .syllabus-container {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      }
-    }
-
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .progress-stats {
-        flex-wrap: wrap;
-      }
-      
-      .subject-progress {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      }
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .nav-controls .stats-display {
-        display: none;
-      }
-      
-      .hero h1 {
-        font-size: 1.9rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-      
-      .syllabus-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .progress-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-      
-      .progress-stats {
-        width: 100%;
-        justify-content: space-between;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 30px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .container {
-        padding: 0 15px;
-      }
-      
-      .hero {
-        padding: 40px 0 30px;
-      }
-      
-      .hero h1 {
-        font-size: 1.7rem;
-      }
-      
-      .progress-overview {
-        padding: 20px;
-      }
-      
-      .subject-progress {
-        grid-template-columns: 1fr;
-      }
-      
-      .action-buttons {
-        flex-direction: column;
-      }
-      
-      .action-btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    /* =======================
-       Animations
-    ======================= */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .subject-card {
-      animation: fadeInUp 0.5s ease forwards;
-      opacity: 0;
-    }
-
-    .subject-card:nth-child(1) { animation-delay: 0.1s; }
-    .subject-card:nth-child(2) { animation-delay: 0.2s; }
-    .subject-card:nth-child(3) { animation-delay: 0.3s; }
-    .subject-card:nth-child(4) { animation-delay: 0.4s; }
-    .subject-card:nth-child(5) { animation-delay: 0.5s; }
-    .subject-card:nth-child(6) { animation-delay: 0.6s; }
-    .subject-card:nth-child(7) { animation-delay: 0.7s; }
-    .subject-card:nth-child(8) { animation-delay: 0.8s; }
-
-    /* =======================
-       Custom Scrollbar
-    ======================= */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--dark-light);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
-    }
-  </style>
+  <title>CUET UG – Master Syllabus Tracker (Math, Physics, Chemistry, English, Hindi, GS)</title>
+  <link rel="stylesheet" href="chsl.css">
+  <script src="chsl.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container header-content">
-      <a href="#" class="logo">
-        <i class="fas fa-book-open logo-icon"></i>
-        CUET<span>PG</span> Tracker
-      </a>
-      
-      <div class="nav-controls">
-        <div class="stats-display">
-          <div class="stat-item">
-            <i class="fas fa-check-circle" style="color: #10b981;"></i>
-            <span>Completed: <span class="stat-value" id="completed-count">0</span></span>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-clock" style="color: #f59e0b;"></i>
-            <span>Remaining: <span class="stat-value" id="remaining-count">0</span></span>
-          </div>
-          <div class="stat-item">
-            <i class="fas fa-percentage" style="color: #3b82f6;"></i>
-            <span>Progress: <span class="stat-value" id="overall-percent">0%</span></span>
-          </div>
-        </div>
-        
-        <button class="btn btn-primary" id="exportBtn">
-          <i class="fas fa-download"></i> Export Progress
-        </button>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
-        </button>
+  <div class="container">
+    <h1>CUET UG – Master Syllabus Tracker</h1>
+
+    <!-- Overall Progress -->
+    <div class="progress-container">
+      <label>Overall Progress:</label>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
       </div>
+      <span id="progress-text">0% Complete</span>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>CUET PG <span class="gradient-text">Complete Syllabus Tracker</span></h1>
-      <p class="hero-subtitle">Track your preparation progress across all subjects with this comprehensive syllabus tracker</p>
+    <div class="syllabus-section">
+
+      <!-- ===================== MATHEMATICS ===================== -->
+      <div class="sub-section">
+        <h2>Mathematics</h2>
+
+        <h3>Relations & Functions</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Types of relations (reflexive, symmetric, transitive), equivalence relations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Functions: domain, codomain, range; injective, surjective, bijective</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Composite & inverse of functions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Inverse trigonometric functions (principal values, properties)</span></label></li>
+        </ul>
+
+        <h3>Algebra (Matrices & Determinants)</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Matrices: types, operations, transpose, symmetric/skew-symmetric</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Determinants: properties, minors/cofactors, adjoint & inverse of a matrix</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Solving linear equations by matrix method, consistency</span></label></li>
+        </ul>
+
+        <h3>Calculus</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Continuity & differentiability; exponential & logarithmic differentiation</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Derivatives: product/quotient/chain rule; higher order derivatives</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Applications: monotonicity, maxima & minima, tangents & normals, rate of change</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Integrals (definite & indefinite): standard forms, substitution, parts, partial fractions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Applications of integrals: area under curves, between curves</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Differential equations: order & degree, formation, first-order linear & variable separable</span></label></li>
+        </ul>
+
+        <h3>Vectors & 3D Geometry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Vector algebra: magnitude, direction, position vector, section formula</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Dot & cross product; scalar triple product; applications</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">3D geometry: direction cosines, line in 3D, plane, angle between lines/planes, distance</span></label></li>
+        </ul>
+
+        <h3>Linear Programming</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Formulation of LPP (≤, ≥ constraints), feasible region, objective function</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Graphical method, corner point method, unbounded cases</span></label></li>
+        </ul>
+
+        <h3>Probability & Statistics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Conditional probability, Bayes’ theorem, independent events</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Random variables, PMF/ PDF (discrete basics), mean & variance</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Binomial distribution (basics), measures of dispersion</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== PHYSICS ===================== -->
+      <div class="sub-section">
+        <h2>Physics</h2>
+
+        <h3>Mechanics & Properties of Matter</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Units & measurements; significant figures; dimensional analysis</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Kinematics: motion in 1D/2D, projectile, relative velocity</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Laws of motion; friction; circular motion; dynamics</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Work, energy & power; collisions; center of mass; momentum conservation</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Rotational motion: torque, angular momentum, rolling, moment of inertia</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Gravitation: Kepler’s laws, satellite motion, escape velocity</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Elasticity, viscosity, surface tension; fluid dynamics (Bernoulli)</span></label></li>
+        </ul>
+
+        <h3>Thermal Physics & Kinetic Theory</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Thermodynamic systems, processes, first law & second law; heat engines, refrigerators</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Kinetic theory of gases: degrees of freedom, specific heats, mean free path (basics)</span></label></li>
+        </ul>
+
+        <h3>Oscillations & Waves</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">SHM: displacement, velocity, energy; damped & forced oscillations; resonance</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Waves: superposition, standing waves, beats, Doppler effect (basics)</span></label></li>
+        </ul>
+
+        <h3>Electricity & Magnetism</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Electrostatics: Coulomb’s law, electric field & potential, capacitors, dielectrics, energy</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Current electricity: Ohm’s law, circuits, Kirchhoff’s rules, Wheatstone bridge</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Magnetism & matter, Biot–Savart, Ampere’s law, Lorentz force, cyclotron (idea)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Electromagnetic induction, AC circuits (LCR basics), transformers</span></label></li>
+        </ul>
+
+        <h3>Optics & Modern Physics</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">EM waves spectrum; ray optics: reflection, refraction, lens formula, optical instruments</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Wave optics: interference, diffraction, polarization (basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Dual nature of radiation & matter; photoelectric effect; de Broglie</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Atomic models; nuclei: radioactivity, mass-energy, nuclear reactions (overview)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Semiconductor electronics: diodes, transistors (basics), logic gates (idea)</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== CHEMISTRY ===================== -->
+      <div class="sub-section">
+        <h2>Chemistry</h2>
+
+        <h3>Physical Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Mole concept, atomic structure, quantum numbers, electronic configuration</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Periodic table & periodicity; ionization energy, electronegativity, atomic radii trends</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Chemical bonding: VSEPR, hybridization, MOT (basics), H-bonding, intermolecular forces</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">States of matter; ideal & real gases; liquefaction (idea)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Thermodynamics: enthalpy, entropy, Gibbs energy; spontaneity; Hess’s law</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Chemical & ionic equilibrium; acid–base (pH), solubility product, buffer (basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Solutions & colligative properties; Raoult’s law (basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Electrochemistry: galvanic cells, Nernst equation (idea), electrolysis (basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Chemical kinetics: rate law, order, half-life (simple cases)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Surface chemistry: adsorption (Freundlich idea), colloids, emulsions</span></label></li>
+        </ul>
+
+        <h3>Inorganic Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">s-block & p-block elements: trends, important compounds & reactions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">d- & f-block elements: properties, color, catalytic behavior, complex formation (intro)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Coordination compounds: nomenclature, Werner theory (basics), isomerism (idea)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Metallurgy (principles), qualitative analysis (brief)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Hydrogen, water & hydrides; environmental chemistry (overview)</span></label></li>
+        </ul>
+
+        <h3>Organic Chemistry</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Basic concepts & techniques: IUPAC, isomerism, inductive/mesomeric effects, carbocations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Hydrocarbons: alkanes, alkenes, alkynes; aromaticity (benzene), electrophilic substitution</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Haloalkanes & haloarenes: nucleophilic substitution (SN1/SN2 basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Alcohols, phenols, ethers: reactions & properties (overview)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Aldehydes, ketones, carboxylic acids: nucleophilic addition, oxidation/reduction (basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Amines: basicity, diazotization (idea), reactions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Biomolecules: carbohydrates, proteins, nucleic acids, vitamins (overview)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Polymers & chemistry in everyday life</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== ENGLISH (LANGUAGE) ===================== -->
+      <div class="sub-section">
+        <h2>English (Language Test)</h2>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Reading Comprehension: factual, narrative, literary passages</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Vocabulary: synonyms, antonyms, word usage, collocations</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Grammar: parts of speech, tenses, subject-verb agreement, articles, prepositions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Spotting errors & sentence improvement</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Para-jumbles & sentence rearrangement</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Cloze test & fill in the blanks</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Idioms & phrases; one-word substitutions</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Spelling & commonly confused words</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== HINDI (LANGUAGE) ===================== -->
+      <div class="sub-section">
+        <h2>Hindi (भाषा परीक्षा)</h2>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">अपठित गद्यांश (Reading Comprehension)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">व्याकरण: संज्ञा, सर्वनाम, विशेषण, क्रिया, काल, वचन, लिंग, कारक, समास, संधि</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">शुद्ध-अशुद्ध वाक्य / त्रुटि सुधार</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">पर्यायवाची-विपरीतार्थक शब्द (Vocabulary)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">मुहावरे एवं लोकोक्तियाँ; एक-शब्द</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">वाक्य विन्यास / वाक्य-क्रम</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">शब्द-लेखन (Spelling)</span></label></li>
+        </ul>
+      </div>
+
+      <!-- ===================== GENERAL TEST (GS / GAT) ===================== -->
+      <div class="sub-section">
+        <h2>General Test (GS / GAT)</h2>
+
+        <h3>General Knowledge & Current Affairs</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">National & International events; Government schemes; awards & honors</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Books & authors; important organizations; personalities; sports</span></label></li>
+        </ul>
+
+        <h3>General Science & Environmental Awareness</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Basic Physics, Chemistry, Biology (class X level) – everyday applications</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Environment & ecology, sustainable development (basics)</span></label></li>
+        </ul>
+
+        <h3>Quantitative/Numerical Aptitude (Basic)</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Number system, BODMAS, fractions, decimals, LCM & HCF</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Ratio & proportion, percentage, averages, profit-loss-discount, SI/CI</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Time & work, time-speed-distance, mensuration (2D/3D basics)</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Algebra & geometry basics; data interpretation (tables/graphs)</span></label></li>
+        </ul>
+
+        <h3>Logical & Analytical Reasoning / Mental Ability</h3>
+        <ul>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Analogies, classification, series (alpha-numeric), coding-decoding</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Blood relations, directions, calendar & clock, puzzles, Venn diagrams</span></label></li>
+          <li><label class="topic-label"><input type="checkbox" class="topic"><span contenteditable="true">Statement-argument/assumption/conclusion; data sufficiency (basics)</span></label></li>
+        </ul>
+      </div>
+
     </div>
-  </section>
-
-  <!-- Progress Overview -->
-  <section class="section">
-    <div class="container">
-      <div class="progress-overview">
-        <div class="progress-header">
-          <h2>Overall Progress</h2>
-          <div class="progress-stats">
-            <div class="progress-stat">
-              <div class="progress-stat-value" id="total-topics">0</div>
-              <div class="progress-stat-label">Total Topics</div>
-            </div>
-            <div class="progress-stat">
-              <div class="progress-stat-value" id="completed-topics">0</div>
-              <div class="progress-stat-label">Completed</div>
-            </div>
-            <div class="progress-stat">
-              <div class="progress-stat-value" id="progress-percent">0%</div>
-              <div class="progress-stat-label">Overall Progress</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="overall-progress-bar">
-          <div class="overall-progress-fill" id="overall-progress-fill"></div>
-        </div>
-        
-        <div class="subject-progress" id="subject-progress-list">
-          <!-- Subject progress items will be dynamically inserted here -->
-        </div>
-      </div>
-      
-      <!-- Quick Actions -->
-      <div class="quick-actions">
-        <h3>Quick Actions</h3>
-        <div class="action-buttons">
-          <button class="action-btn" id="markAllBtn">
-            <i class="fas fa-check-double"></i> Mark All as Complete
-          </button>
-          <button class="action-btn" id="clearAllBtn">
-            <i class="fas fa-undo"></i> Clear All Progress
-          </button>
-          <button class="action-btn" id="saveBtn">
-            <i class="fas fa-save"></i> Save Progress
-          </button>
-          <button class="action-btn" id="focusModeBtn">
-            <i class="fas fa-eye"></i> Focus Mode
-          </button>
-          <button class="action-btn" id="printBtn">
-            <i class="fas fa-print"></i> Print Syllabus
-          </button>
-        </div>
-      </div>
-      
-      <!-- Subject Filters -->
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All Subjects</button>
-        <button class="filter-btn" data-filter="english">English Literature</button>
-        <button class="filter-btn" data-filter="polity">Political Science</button>
-        <button class="filter-btn" data-filter="math">Mathematics</button>
-        <button class="filter-btn" data-filter="science">Science</button>
-        <button class="filter-btn" data-filter="language">Languages</button>
-        <button class="filter-btn" data-filter="general">General Test</button>
-      </div>
-      
-      <!-- Syllabus Cards -->
-      <div class="syllabus-container" id="syllabusContainer">
-        <!-- Cards will be dynamically inserted here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>CUET PG Tracker</h3>
-          <p style="color: var(--text-light); margin-bottom: 15px;">
-            A comprehensive tool to track your preparation progress for CUET PG examination.
-          </p>
-          <p style="color: var(--text-light); font-size: 0.9rem;">
-            <i class="fas fa-calendar-alt"></i> Last Updated: May 2023
-          </p>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-external-link-alt"></i> Official CUET Website</a></li>
-            <li><a href="#"><i class="fas fa-download"></i> Download Syllabus PDF</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ & Help</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> Contact Support</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Study Resources</h3>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-book"></i> Previous Year Papers</a></li>
-            <li><a href="#"><i class="fas fa-video"></i> Video Lectures</a></li>
-            <li><a href="#"><i class="fas fa-file-pdf"></i> Study Materials</a></li>
-            <li><a href="#"><i class="fas fa-chart-line"></i> Mock Tests</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="copyright">
-        <p>&copy; 2023 CUET PG Syllabus Tracker. All rights reserved. This is an unofficial tool for educational purposes.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Syllabus Data
-    const syllabusData = [
-      {
-        id: "english-literature",
-        title: "English Literature",
-        icon: "fas fa-scroll",
-        badge: "badge-english",
-        color: "#3b82f6",
-        units: [
-          {
-            title: "History of English Literature",
-            topics: [
-              "Old English & Medieval Period",
-              "Renaissance and Elizabethan Literature",
-              "17th Century (Metaphysical & Cavalier Poets)",
-              "Restoration & 18th Century (Augustan Age)",
-              "Romantic Period",
-              "Victorian Literature",
-              "Modernism (20th C)",
-              "Contemporary English literature (post-1945)",
-              "Authors, genres, key works, literary movements, historical contexts"
-            ]
-          },
-          {
-            title: "History of Indian Literatures in English",
-            topics: [
-              "Early Indian English poetry & prose",
-              "Freedom movement and literature",
-              "Post-Independence Indian writing in English",
-              "Major poets, novelists, playwrights, essayists",
-              "Understand important texts and contributions of Indian writers"
-            ]
-          },
-          {
-            title: "Indian Writing in English",
-            topics: [
-              "Poetry",
-              "Novel",
-              "Drama",
-              "Short Story",
-              "Major thematic concerns",
-              "Focus on texts commonly taught in BA English"
-            ]
-          },
-          {
-            title: "Literary Terms & Devices",
-            topics: [
-              "Allegory",
-              "Ballad",
-              "Blank verse",
-              "Onomatopoeia",
-              "Irony, Paradox, Satire",
-              "Simile, Metaphor, Figures of speech",
-              "Plot, Character, Theme, Symbolism",
-              "All major literary terms and definitions"
-            ]
-          },
-          {
-            title: "Literary Genres",
-            topics: [
-              "Poetry",
-              "Drama",
-              "Novel",
-              "Prose and Essay",
-              "Short Story",
-              "Biography & Autobiography",
-              "Travelogue",
-              "Science fiction, Fantasy, Non-fiction",
-              "Genre characteristics, examples, evolution"
-            ]
-          },
-          {
-            title: "Comparative Literature & Translation Studies",
-            topics: [
-              "Theory of comparative literature",
-              "Cross-cultural texts",
-              "Translation: methods and issues",
-              "World literature connections",
-              "Comparing literature across languages and traditions"
-            ]
-          },
-          {
-            title: "Literary Criticism & Theory",
-            topics: [
-              "Classical criticism (Aristotle)",
-              "Formalism & New Criticism",
-              "Structuralism & Post-structuralism",
-              "Marxism and Cultural Materialism",
-              "Feminist criticism",
-              "Eco-criticism",
-              "Post-colonial theory",
-              "Reader-response criticism",
-              "Major critics, major concepts, applications"
-            ]
-          },
-          {
-            title: "Awareness of Literary Trends & Events",
-            topics: [
-              "Contemporary literary trends",
-              "Major literary awards (e.g., Booker, Pulitzer)",
-              "Literary festivals & journals",
-              "Stay updated on recent developments"
-            ]
-          }
-        ]
-      },
-      {
-        id: "political-science",
-        title: "Political Science",
-        icon: "fas fa-landmark",
-        badge: "badge-polity",
-        color: "#8b5cf6",
-        units: [
-          {
-            title: "Western Political Philosophy",
-            topics: [
-              "Plato, Aristotle",
-              "Machiavelli",
-              "Hobbes, Locke",
-              "Rousseau",
-              "J.S. Mill",
-              "Karl Marx",
-              "John Rawls",
-              "Focus on key ideas, state, liberty, justice"
-            ]
-          },
-          {
-            title: "Indian Political Thought",
-            topics: [
-              "Kautilya",
-              "Ram Mohan Roy",
-              "Gandhi",
-              "B.R. Ambedkar",
-              "Savarkar",
-              "Concepts of dharma, Swaraj, caste and social justice"
-            ]
-          },
-          {
-            title: "Political Theory",
-            topics: [
-              "Liberty",
-              "Equality",
-              "Justice",
-              "Sovereignty",
-              "Citizenship",
-              "Gender & Feminism",
-              "Democracy",
-              "Human Rights",
-              "Political Ideologies",
-              "Definitions, debates, and applications"
-            ]
-          },
-          {
-            title: "International Relations",
-            topics: [
-              "Realism & Liberalism",
-              "Cold War Politics",
-              "Non-Aligned Movement (NAM)",
-              "SAARC, ASEAN, EU",
-              "United Nations Organizations",
-              "India's foreign policy (China, Pakistan, USA)",
-              "Focus on global politics & institutions"
-            ]
-          },
-          {
-            title: "Indian Government & Politics",
-            topics: [
-              "Constitution: Preamble, features",
-              "Making of the Constitution",
-              "Fundamental Rights & Duties",
-              "Directive Principles of State Policy",
-              "Parliament, President, Prime Minister",
-              "Federalism, State Government",
-              "Political Parties & Elections",
-              "Local Government (Panchayati Raj)",
-              "Judiciary & Governance",
-              "Structure and processes of Indian polity"
-            ]
-          },
-          {
-            title: "Comparative Government & Politics",
-            topics: [
-              "Political Culture",
-              "Political Parties & Electoral Systems",
-              "Approaches/Models of comparative politics",
-              "Types of political regimes",
-              "Compare different political systems"
-            ]
-          },
-          {
-            title: "Public Policies in India",
-            topics: [
-              "Policy concepts & models",
-              "Policy-making process",
-              "Types of public policies",
-              "Role of bureaucracy, implementation issues"
-            ]
-          },
-          {
-            title: "Contemporary Issues",
-            topics: [
-              "Global Justice",
-              "Nationalism",
-              "Climate Change & Environment",
-              "Current affairs and global political concerns"
-            ]
-          }
-        ]
-      },
-      {
-        id: "mathematics",
-        title: "Mathematics",
-        icon: "fas fa-square-root-alt",
-        badge: "badge-math",
-        color: "#10b981",
-        units: [
-          {
-            title: "Real Analysis & Linear Algebra",
-            topics: [
-              "Sequences & series; limits; continuity; differentiability",
-              "Riemann integral; mean value theorems; Taylor's theorem",
-              "Vector spaces; linear transformations; eigenvalues & eigenvectors"
-            ]
-          },
-          {
-            title: "Complex Analysis & Topology (Basics)",
-            topics: [
-              "Analytic functions; Cauchy's integral theorem; residues (overview)"
-            ]
-          },
-          {
-            title: "Abstract Algebra",
-            topics: [
-              "Groups, subgroups, homomorphisms; rings & fields (basics)"
-            ]
-          }
-        ]
-      },
-      {
-        id: "physics",
-        title: "Physics",
-        icon: "fas fa-atom",
-        badge: "badge-science",
-        color: "#ef4444",
-        units: [
-          {
-            title: "Condensed Matter & Quantum Mechanics",
-            topics: [
-              "Crystal structures; Band theory and semiconductors",
-              "Schrödinger equation; particle in box; harmonic oscillator"
-            ]
-          },
-          {
-            title: "Statistical Mechanics & Thermodynamics",
-            topics: [
-              "Maxwell–Boltzmann distribution; partition function; thermodynamic potentials"
-            ]
-          },
-          {
-            title: "Electrodynamics & Optics",
-            topics: [
-              "Maxwell's equations; EM waves; waveguides (overview)",
-              "Interference, diffraction, polarization; lasers (basics)"
-            ]
-          }
-        ]
-      },
-      {
-        id: "chemistry",
-        title: "Chemistry",
-        icon: "fas fa-flask",
-        badge: "badge-science",
-        color: "#ef4444",
-        units: [
-          {
-            title: "Advanced Physical Chemistry",
-            topics: [
-              "Quantum chemistry basics; molecular orbital theory (overview)",
-              "Statistical thermodynamics (concepts, partition function)"
-            ]
-          },
-          {
-            title: "Inorganic Chemistry",
-            topics: [
-              "Coordination compounds: crystal field theory; isomerism",
-              "Descriptive chemistry – p/d/f block elements, periodic trends"
-            ]
-          },
-          {
-            title: "Organic Chemistry & Spectroscopy",
-            topics: [
-              "Reaction mechanisms: SN1/SN2, electrophilic additions, E1/E2",
-              "Spectroscopy basics: UV-Vis, IR, NMR (principles)"
-            ]
-          }
-        ]
-      },
-      {
-        id: "english-language",
-        title: "English Language",
-        icon: "fas fa-language",
-        badge: "badge-language",
-        color: "#06b6d4",
-        units: [
-          {
-            title: "Language Test",
-            topics: [
-              "Advanced Reading Comprehension & inference",
-              "Critical reasoning; para-jumbles for academic texts",
-              "Academic vocabulary: technical terms, collocations",
-              "Grammar & editing: academic style, ambiguity resolution"
-            ]
-          }
-        ]
-      },
-      {
-        id: "hindi-language",
-        title: "Hindi Language",
-        icon: "fas fa-language",
-        badge: "badge-language",
-        color: "#06b6d4",
-        units: [
-          {
-            title: "Hindi Language Test",
-            topics: [
-              "वाच comprehension (academic passages)",
-              "उन्नत व्याकरण और शैली (Improved grammar, editing passages)",
-              "Technical vocabulary, भारत एवं विश्व साहित्य"
-            ]
-          }
-        ]
-      },
-      {
-        id: "economics",
-        title: "Economics",
-        icon: "fas fa-chart-line",
-        badge: "badge-economics",
-        color: "#f59e0b",
-        units: [
-          {
-            title: "Microeconomics",
-            topics: [
-              "Consumer behavior: utility, demand functions",
-              "Production & cost analysis; market structures"
-            ]
-          },
-          {
-            title: "Macroeconomics",
-            topics: [
-              "National income accounts & GDP",
-              "Monetary and fiscal policy basics",
-              "Inflation, business cycles, money supply"
-            ]
-          },
-          {
-            title: "Indian Economy",
-            topics: [
-              "Economic reforms post-1991; planning; budgeting",
-              "Current India – schemes, challenges, sectors"
-            ]
-          }
-        ]
-      },
-      {
-        id: "general-test",
-        title: "General Test",
-        icon: "fas fa-clipboard-list",
-        badge: "badge-general",
-        color: "#64748b",
-        units: [
-          {
-            title: "General Test (Compulsory)",
-            topics: [
-              "General English – comprehension, grammar, verbal ability",
-              "General Awareness – current affairs, national & international events",
-              "General Mental Ability – reasoning, data interpretation"
-            ]
-          }
-        ]
-      }
-    ];
-
-    // App State
-    let progressData = {};
-    let activeFilter = "all";
-
-    // DOM Elements
-    const syllabusContainer = document.getElementById('syllabusContainer');
-    const subjectProgressList = document.getElementById('subject-progress-list');
-    const overallProgressFill = document.getElementById('overall-progress-fill');
-    const completedCount = document.getElementById('completed-count');
-    const remainingCount = document.getElementById('remaining-count');
-    const overallPercent = document.getElementById('overall-percent');
-    const totalTopics = document.getElementById('total-topics');
-    const completedTopics = document.getElementById('completed-topics');
-    const progressPercent = document.getElementById('progress-percent');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const exportBtn = document.getElementById('exportBtn');
-    const markAllBtn = document.getElementById('markAllBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-    const saveBtn = document.getElementById('saveBtn');
-    const focusModeBtn = document.getElementById('focusModeBtn');
-    const printBtn = document.getElementById('printBtn');
-
-    // Initialize App
-    function init() {
-      loadProgressData();
-      renderSyllabusCards();
-      updateProgressDisplay();
-      setupEventListeners();
-    }
-
-    // Load progress data from localStorage
-    function loadProgressData() {
-      const saved = localStorage.getItem('cuetPgProgress');
-      if (saved) {
-        progressData = JSON.parse(saved);
-      } else {
-        // Initialize empty progress data
-        syllabusData.forEach(subject => {
-          progressData[subject.id] = {};
-          subject.units.forEach((unit, unitIndex) => {
-            progressData[subject.id][unitIndex] = Array(unit.topics.length).fill(false);
-          });
-        });
-        saveProgressData();
-      }
-    }
-
-    // Save progress data to localStorage
-    function saveProgressData() {
-      localStorage.setItem('cuetPgProgress', JSON.stringify(progressData));
-    }
-
-    // Render syllabus cards
-    function renderSyllabusCards() {
-      syllabusContainer.innerHTML = '';
-      subjectProgressList.innerHTML = '';
-      
-      let filteredSubjects = syllabusData;
-      
-      if (activeFilter !== "all") {
-        filteredSubjects = syllabusData.filter(subject => {
-          if (activeFilter === "english") return subject.id === "english-literature";
-          if (activeFilter === "polity") return subject.id === "political-science";
-          if (activeFilter === "math") return subject.id === "mathematics";
-          if (activeFilter === "science") return ["physics", "chemistry"].includes(subject.id);
-          if (activeFilter === "language") return ["english-language", "hindi-language"].includes(subject.id);
-          if (activeFilter === "general") return subject.id === "general-test";
-          if (activeFilter === "economics") return subject.id === "economics";
-          return true;
-        });
-      }
-      
-      // Calculate subject progress for sidebar
-      const subjectProgressData = [];
-      
-      filteredSubjects.forEach((subject, index) => {
-        // Create subject card
-        const card = document.createElement('div');
-        card.className = 'subject-card';
-        card.dataset.subject = subject.id;
-        
-        // Calculate subject progress
-        let subjectTotal = 0;
-        let subjectCompleted = 0;
-        
-        subject.units.forEach((unit, unitIndex) => {
-          subjectTotal += unit.topics.length;
-          if (progressData[subject.id] && progressData[subject.id][unitIndex]) {
-            subjectCompleted += progressData[subject.id][unitIndex].filter(t => t).length;
-          }
-        });
-        
-        const subjectPercent = subjectTotal > 0 ? Math.round((subjectCompleted / subjectTotal) * 100) : 0;
-        subjectProgressData.push({...subject, percent: subjectPercent});
-        
-        // Card HTML
-        card.innerHTML = `
-          <div class="subject-header">
-            <div class="subject-title">
-              <i class="${subject.icon} subject-icon"></i>
-              <h3 class="subject-name">${subject.title}</h3>
-            </div>
-            <span class="badge ${subject.badge}">${subjectPercent}%</span>
-          </div>
-          <div class="subject-content">
-            ${subject.units.map((unit, unitIndex) => `
-              <div class="unit">
-                <h4 class="unit-title">${unit.title}</h4>
-                <ul class="topics-list">
-                  ${unit.topics.map((topic, topicIndex) => {
-                    const isChecked = progressData[subject.id] && 
-                                     progressData[subject.id][unitIndex] && 
-                                     progressData[subject.id][unitIndex][topicIndex];
-                    return `
-                      <li class="topic-item">
-                        <div class="topic-checkbox">
-                          <input type="checkbox" 
-                                 id="${subject.id}-${unitIndex}-${topicIndex}"
-                                 ${isChecked ? 'checked' : ''}
-                                 data-subject="${subject.id}"
-                                 data-unit="${unitIndex}"
-                                 data-topic="${topicIndex}">
-                        </div>
-                        <label for="${subject.id}-${unitIndex}-${topicIndex}" class="topic-text">${topic}</label>
-                      </li>
-                    `;
-                  }).join('')}
-                </ul>
-              </div>
-            `).join('')}
-          </div>
-          <div class="subject-actions">
-            <div class="subject-progress-small">
-              Progress: <span>${subjectCompleted}/${subjectTotal} topics</span>
-            </div>
-            <button class="btn btn-primary btn-small mark-subject-btn" data-subject="${subject.id}">
-              <i class="fas fa-check"></i> Mark All
-            </button>
-          </div>
-        `;
-        
-        syllabusContainer.appendChild(card);
-        
-        // Add subject progress to sidebar
-        const progressItem = document.createElement('div');
-        progressItem.className = 'subject-progress-item';
-        progressItem.innerHTML = `
-          <div class="subject-name">
-            <span>${subject.title}</span>
-            <span>${subjectPercent}%</span>
-          </div>
-          <div class="subject-progress-bar">
-            <div class="subject-progress-fill" style="width: ${subjectPercent}%; background: ${subject.color};"></div>
-          </div>
-        `;
-        subjectProgressList.appendChild(progressItem);
-      });
-      
-      // Add event listeners to checkboxes
-      document.querySelectorAll('.topic-checkbox input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', handleCheckboxChange);
-      });
-      
-      // Add event listeners to mark subject buttons
-      document.querySelectorAll('.mark-subject-btn').forEach(button => {
-        button.addEventListener('click', handleMarkSubject);
-      });
-    }
-
-    // Handle checkbox change
-    function handleCheckboxChange(e) {
-      const checkbox = e.target;
-      const subjectId = checkbox.dataset.subject;
-      const unitIndex = parseInt(checkbox.dataset.unit);
-      const topicIndex = parseInt(checkbox.dataset.topic);
-      
-      if (!progressData[subjectId]) {
-        progressData[subjectId] = {};
-      }
-      
-      if (!progressData[subjectId][unitIndex]) {
-        progressData[subjectId][unitIndex] = [];
-      }
-      
-      progressData[subjectId][unitIndex][topicIndex] = checkbox.checked;
-      
-      saveProgressData();
-      updateProgressDisplay();
-      
-      // Update the specific subject's progress badge
-      updateSubjectBadge(subjectId);
-    }
-
-    // Handle mark subject button
-    function handleMarkSubject(e) {
-      const subjectId = e.target.dataset.subject;
-      const subject = syllabusData.find(s => s.id === subjectId);
-      
-      if (!progressData[subjectId]) {
-        progressData[subjectId] = {};
-      }
-      
-      // Toggle between mark all and unmark all
-      let allChecked = true;
-      subject.units.forEach((unit, unitIndex) => {
-        if (!progressData[subjectId][unitIndex]) {
-          progressData[subjectId][unitIndex] = Array(unit.topics.length).fill(false);
-          allChecked = false;
-        } else {
-          const unitAllChecked = progressData[subjectId][unitIndex].every(t => t);
-          if (!unitAllChecked) allChecked = false;
-        }
-      });
-      
-      // Set all topics to opposite of current state
-      subject.units.forEach((unit, unitIndex) => {
-        progressData[subjectId][unitIndex] = Array(unit.topics.length).fill(!allChecked);
-      });
-      
-      saveProgressData();
-      updateProgressDisplay();
-      renderSyllabusCards();
-    }
-
-    // Update subject badge
-    function updateSubjectBadge(subjectId) {
-      const subject = syllabusData.find(s => s.id === subjectId);
-      let subjectTotal = 0;
-      let subjectCompleted = 0;
-      
-      subject.units.forEach((unit, unitIndex) => {
-        subjectTotal += unit.topics.length;
-        if (progressData[subjectId] && progressData[subjectId][unitIndex]) {
-          subjectCompleted += progressData[subjectId][unitIndex].filter(t => t).length;
-        }
-      });
-      
-      const subjectPercent = subjectTotal > 0 ? Math.round((subjectCompleted / subjectTotal) * 100) : 0;
-      
-      // Update badge in the card
-      const badge = document.querySelector(`.subject-card[data-subject="${subjectId}"] .badge`);
-      if (badge) {
-        badge.textContent = `${subjectPercent}%`;
-      }
-      
-      // Update progress in sidebar
-      updateProgressDisplay();
-    }
-
-    // Update overall progress display
-    function updateProgressDisplay() {
-      let totalTopicsCount = 0;
-      let completedTopicsCount = 0;
-      
-      syllabusData.forEach(subject => {
-        subject.units.forEach((unit, unitIndex) => {
-          totalTopicsCount += unit.topics.length;
-          if (progressData[subject.id] && progressData[subject.id][unitIndex]) {
-            completedTopicsCount += progressData[subject.id][unitIndex].filter(t => t).length;
-          }
-        });
-      });
-      
-      const progressPercentage = totalTopicsCount > 0 ? Math.round((completedTopicsCount / totalTopicsCount) * 100) : 0;
-      
-      // Update all display elements
-      overallProgressFill.style.width = `${progressPercentage}%`;
-      completedCount.textContent = completedTopicsCount;
-      remainingCount.textContent = totalTopicsCount - completedTopicsCount;
-      overallPercent.textContent = `${progressPercentage}%`;
-      totalTopics.textContent = totalTopicsCount;
-      completedTopics.textContent = completedTopicsCount;
-      progressPercent.textContent = `${progressPercentage}%`;
-    }
-
-    // Setup event listeners
-    function setupEventListeners() {
-      // Filter buttons
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
-          activeFilter = this.dataset.filter;
-          renderSyllabusCards();
-        });
-      });
-      
-      // Export button
-      exportBtn.addEventListener('click', exportProgress);
-      
-      // Mark all button
-      markAllBtn.addEventListener('click', function() {
-        syllabusData.forEach(subject => {
-          if (!progressData[subject.id]) progressData[subject.id] = {};
-          
-          subject.units.forEach((unit, unitIndex) => {
-            progressData[subject.id][unitIndex] = Array(unit.topics.length).fill(true);
-          });
-        });
-        
-        saveProgressData();
-        updateProgressDisplay();
-        renderSyllabusCards();
-        
-        // Show confirmation
-        showToast('All topics marked as complete!', 'success');
-      });
-      
-      // Clear all button
-      clearAllBtn.addEventListener('click', function() {
-        if (confirm('Are you sure you want to clear all progress? This cannot be undone.')) {
-          syllabusData.forEach(subject => {
-            progressData[subject.id] = {};
-            subject.units.forEach((unit, unitIndex) => {
-              progressData[subject.id][unitIndex] = Array(unit.topics.length).fill(false);
-            });
-          });
-          
-          saveProgressData();
-          updateProgressDisplay();
-          renderSyllabusCards();
-          
-          showToast('All progress cleared!', 'info');
-        }
-      });
-      
-      // Save button
-      saveBtn.addEventListener('click', function() {
-        saveProgressData();
-        showToast('Progress saved successfully!', 'success');
-      });
-      
-      // Focus mode button
-      focusModeBtn.addEventListener('click', function() {
-        document.body.classList.toggle('focus-mode');
-        const isFocusMode = document.body.classList.contains('focus-mode');
-        this.innerHTML = isFocusMode ? 
-          '<i class="fas fa-eye-slash"></i> Exit Focus Mode' : 
-          '<i class="fas fa-eye"></i> Focus Mode';
-        
-        if (isFocusMode) {
-          document.querySelectorAll('.subject-card:not(:first-of-type)').forEach(card => {
-            card.style.display = 'none';
-          });
-          showToast('Focus mode enabled. Only showing first subject.', 'info');
-        } else {
-          document.querySelectorAll('.subject-card').forEach(card => {
-            card.style.display = 'flex';
-          });
-        }
-      });
-      
-      // Print button
-      printBtn.addEventListener('click', function() {
-        window.print();
-      });
-    }
-
-    // Export progress as JSON
-    function exportProgress() {
-      const dataStr = JSON.stringify(progressData, null, 2);
-      const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-      
-      const exportFileDefaultName = `cuet-pg-progress-${new Date().toISOString().split('T')[0]}.json`;
-      
-      const linkElement = document.createElement('a');
-      linkElement.setAttribute('href', dataUri);
-      linkElement.setAttribute('download', exportFileDefaultName);
-      linkElement.click();
-      
-      showToast('Progress exported successfully!', 'success');
-    }
-
-    // Show toast notification
-    function showToast(message, type = 'info') {
-      // Remove existing toast
-      const existingToast = document.querySelector('.toast');
-      if (existingToast) existingToast.remove();
-      
-      // Create toast
-      const toast = document.createElement('div');
-      toast.className = `toast toast-${type}`;
-      toast.innerHTML = `
-        <span>${message}</span>
-        <button class="toast-close"><i class="fas fa-times"></i></button>
-      `;
-      
-      // Add styles
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        padding: 12px 20px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        z-index: 1000;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        animation: slideIn 0.3s ease;
-      `;
-      
-      // Close button
-      const closeBtn = toast.querySelector('.toast-close');
-      closeBtn.style.cssText = `
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        font-size: 0.9rem;
-      `;
-      
-      closeBtn.addEventListener('click', () => toast.remove());
-      
-      document.body.appendChild(toast);
-      
-      // Auto remove after 3 seconds
-      setTimeout(() => {
-        if (toast.parentNode) toast.remove();
-      }, 3000);
-      
-      // Add animation keyframes
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes slideIn {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-
-    // Initialize the app when DOM is loaded
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+  </div>
 </body>
 </html>

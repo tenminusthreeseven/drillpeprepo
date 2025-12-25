@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPCS Exam Preparation Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5a4fcf;
+            --secondary: #00cec9;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #e17055;
+            --border: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        
+        .progress-container {
+            background-color: var(--darker-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .progress-percentage {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .exam-parts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .exam-parts {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .part-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .part-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .part-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .part-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .part-progress {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .topic-list {
+            list-style: none;
+        }
+        
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .topic-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Larger checkbox with better touch area */
+        .checkbox-container {
+            position: relative;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            min-height: 28px;
+            min-width: 28px;
+        }
+        
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            height: 28px;
+            width: 28px;
+            background-color: var(--darker-bg);
+            border-radius: 6px;
+            border: 2px solid var(--border);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .checkbox-container:hover input ~ .checkmark {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .checkmark:after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            display: none;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .topic-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding-right: 10px;
+        }
+        
+        .topic-name {
+            color: var(--text);
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+        
+        .topic-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .topic-status {
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background-color: var(--darker-bg);
+            color: var(--text-secondary);
+            white-space: nowrap;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .topic-status.completed {
+            background-color: rgba(0, 184, 148, 0.2);
+            color: var(--success);
+        }
+        
+        .topic-status.in-progress {
+            background-color: rgba(253, 203, 110, 0.2);
+            color: var(--warning);
+        }
+        
+        .topic-status.not-started {
+            background-color: rgba(225, 112, 85, 0.2);
+            color: var(--danger);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .reset-btn {
+            background-color: var(--danger);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reset-btn:hover {
+            background-color: #d05c44;
+            transform: translateY(-2px);
+        }
+        
+        .part-icon {
+            font-size: 1.8rem;
+        }
+        
+        .color-primary { color: var(--primary); }
+        .color-secondary { color: var(--secondary); }
+        .color-success { color: var(--success); }
+        .color-warning { color: var(--warning); }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 25px 0;
+            width: 100%;
+        }
+        
+        .completion-message {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            background-color: rgba(108, 92, 231, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .topic-counter {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap color-primary"></i> UPPCS Exam Preparation Tracker</h1>
+            <p class="subtitle">Track your progress across all subjects and topics. Click on any topic to mark it as completed.</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-header">
+                <div class="progress-title">Overall Preparation Progress</div>
+                <div class="progress-percentage" id="overallPercentage">0%</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-stats">
+                <div>Total Topics: <span id="totalTopics">0</span></div>
+                <div>Completed: <span id="completedTopics">0</span></div>
+                <div>Remaining: <span id="remainingTopics">0</span></div>
+                <div>Last Updated: <span id="lastUpdated">Just now</span></div>
+            </div>
+        </div>
+        
+        <div id="completionMessage" class="completion-message">
+            🎉 Congratulations! You've completed all topics! Keep revising for success.
+        </div>
+        
+        <div class="exam-parts">
+            <!-- PART 1: Prelims -->
+            <div class="part-card">
+                <div class="part-header">
+                    <div class="part-title">
+                        <i class="fas fa-file-alt color-primary part-icon"></i>
+                        <span>PART 1: Preliminary Examination <span class="topic-counter" id="prelimsCounter">0/19</span></span>
+                    </div>
+                    <div class="part-progress" id="part1Percentage">0%</div>
+                </div>
+                <ul class="topic-list" id="part1List">
+                    <!-- Topics will be populated by JavaScript -->
+                </ul>
+            </div>
+            
+            <!-- PART 2: Mains -->
+            <div class="part-card">
+                <div class="part-header">
+                    <div class="part-title">
+                        <i class="fas fa-file-contract color-secondary part-icon"></i>
+                        <span>PART 2: Mains Examination <span class="topic-counter" id="mainsCounter">0/22</span></span>
+                    </div>
+                    <div class="part-progress" id="part2Percentage">0%</div>
+                </div>
+                <ul class="topic-list" id="part2List">
+                    <!-- Topics will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Track your UPPCS preparation systematically. Focus on <span class="highlight">Uttar Pradesh Special</span> topics as they carry high importance.</p>
+            <p>CSAT Paper requires 33% to qualify, so ensure you're covering all sections.</p>
+            <button class="reset-btn" id="resetBtn"><i class="fas fa-redo"></i> Reset All Progress</button>
+            <p style="margin-top: 20px;">© 2023 UPPCS Preparation Tracker | Designed for aspirants</p>
+        </div>
+    </div>
+
+    <script>
+        // Exam data structure with more details
+        const examData = {
+            prelims: {
+                title: "Paper-I: General Studies-I (200 Marks - Merit counted)",
+                topics: [
+                    { name: "Current Events of National & International Importance", desc: "National issues, International relations, Summits, treaties, International organizations, Sports, awards, personalities, Science & tech current affairs, Government schemes, Environmental issues, Reports & indices", status: "not-started" },
+                    { name: "History of India", desc: "Ancient India, Prehistoric cultures, Indus Valley Civilization, Vedic civilization, Religious movements (Buddhism, Jainism), Mauryan & Gupta administration, Art, architecture, literature, Medieval India, Delhi Sultanate, Mughal administration, Bhakti & Sufi movements, Culture, architecture", status: "not-started" },
+                    { name: "Indian National Movement", desc: "Moderate & Extremist phase, Home Rule movement, Gandhian era, Constitutional developments, Role of revolutionaries, Women, peasants, workers movements", status: "not-started" },
+                    { name: "Indian & World Geography", desc: "Physical Geography, Earth structure, Climatology, Oceanography, Natural vegetation, Environmental geography, Indian Geography, Physiographic divisions, Rivers, soil, climate, Agriculture, Minerals & industries, Transport & communication, World Geography, Continents, Climate zones, Important geographical features", status: "not-started" },
+                    { name: "Indian Polity & Governance", desc: "Constitution: features, amendments, Fundamental Rights & Duties, Directive Principles, Union & State government, Parliament & State Legislature, Judiciary, Panchayati Raj, Local self-government, Election Commission, Constitutional bodies, Non-constitutional bodies, Governance issues", status: "not-started" },
+                    { name: "Indian Economy", desc: "Basic concepts of economy, National income, Planning in India, Five Year Plans, Agriculture, Industry, Infrastructure, Banking & finance, Budget & taxation, Inflation, Poverty & unemployment, Inclusive growth, Economic reforms, Current economic issues", status: "not-started" },
+                    { name: "General Science", desc: "Physics (basic principles), Chemistry (daily life applications), Biology (human body, plants, animals), Environment & ecology, Science & technology developments", status: "not-started" },
+                    { name: "Environment & Ecology", desc: "Biodiversity, Climate change, Environmental pollution, Conservation, Environmental laws, National parks & wildlife sanctuaries", status: "not-started" },
+                    { name: "General Awareness", desc: "National symbols, Important days, Books & authors, Culture, Traditions", status: "not-started" },
+                    { name: "Uttar Pradesh Special (VERY IMPORTANT)", desc: "History of UP, Geography of UP, Economy of UP, Culture, art, festivals, Administration of UP, UP government schemes, Demographics, Agriculture & industries in UP", status: "not-started" }
+                ]
+            },
+            csat: {
+                title: "Paper-II: General Studies-II (CSAT) - 200 Marks (Qualifying – 33% required)",
+                topics: [
+                    { name: "Comprehension", desc: "Reading and understanding passages", status: "not-started" },
+                    { name: "Interpersonal skills", desc: "Communication and interpersonal abilities", status: "not-started" },
+                    { name: "Logical reasoning", desc: "Deductive and inductive reasoning", status: "not-started" },
+                    { name: "Analytical ability", desc: "Critical thinking and analysis", status: "not-started" },
+                    { name: "Decision making & problem solving", desc: "Making decisions and solving problems", status: "not-started" },
+                    { name: "General mental ability", desc: "Basic mental aptitude", status: "not-started" },
+                    { name: "Basic numeracy (Class X level)", desc: "Mathematics up to 10th standard", status: "not-started" },
+                    { name: "Data interpretation", desc: "Interpreting charts, graphs, and data", status: "not-started" },
+                    { name: "English & Hindi comprehension", desc: "Language understanding in both languages", status: "not-started" }
+                ]
+            },
+            mains: {
+                compulsory: {
+                    title: "Compulsory Papers (300 Marks)",
+                    topics: [
+                        { name: "Paper-I: General Hindi (150 Marks)", desc: "Essay, Precis writing, Translation (English ↔ Hindi), Vocabulary, Grammar, Sentence correction", status: "not-started" },
+                        { name: "Paper-II: Essay (150 Marks)", desc: "Essay from three sections: National issues, Social issues, International / Economic / Environmental issues", status: "not-started" }
+                    ]
+                },
+                gs1: {
+                    title: "GS-I: History, Culture, Society (200 Marks)",
+                    topics: [
+                        { name: "Indian History", desc: "Ancient, Medieval, Modern history, Freedom struggle, Post-independence consolidation", status: "not-started" },
+                        { name: "Indian Culture", desc: "Architecture, Sculpture, Paintings, Music & dance, Literature", status: "not-started" },
+                        { name: "World History", desc: "Renaissance, Industrial Revolution, World Wars, Political philosophies", status: "not-started" },
+                        { name: "Society", desc: "Indian society, Social issues, Women & vulnerable sections, Population, Urbanization, Regionalism & secularism", status: "not-started" }
+                    ]
+                },
+                gs2: {
+                    title: "GS-II: Polity, Governance, Constitution (200 Marks)",
+                    topics: [
+                        { name: "Constitution features", desc: "Features, Amendments, Parliament & State Legislature, Judiciary", status: "not-started" },
+                        { name: "Federalism & Governance", desc: "Federal structure, Governance models", status: "not-started" },
+                        { name: "Welfare schemes & Social justice", desc: "Government schemes, Social justice initiatives", status: "not-started" },
+                        { name: "Education & Health", desc: "Education policies, Healthcare systems", status: "not-started" },
+                        { name: "UP governance & administration", desc: "Specific to Uttar Pradesh", status: "not-started" }
+                    ]
+                },
+                gs3: {
+                    title: "GS-III: Economy, Science, Environment, Security (200 Marks)",
+                    topics: [
+                        { name: "Indian Economy", desc: "Agriculture, Industry, Infrastructure, Budget, Planning, Inclusive growth", status: "not-started" },
+                        { name: "Science & Technology", desc: "Space, IT, Biotechnology, Nanotechnology, Defense technology", status: "not-started" },
+                        { name: "Environment", desc: "Climate change, Conservation, Disaster management", status: "not-started" },
+                        { name: "Internal Security", desc: "Terrorism, Cyber security, Border management, Money laundering", status: "not-started" }
+                    ]
+                },
+                gs4: {
+                    title: "GS-IV: Ethics, Integrity & Aptitude (200 Marks)",
+                    topics: [
+                        { name: "Ethics & human values", desc: "Ethical theories, Human values", status: "not-started" },
+                        { name: "Attitude & Emotional intelligence", desc: "Psychological aspects, EQ development", status: "not-started" },
+                        { name: "Integrity & Probity in governance", desc: "Governance ethics, Probity measures", status: "not-started" },
+                        { name: "Case studies & Moral thinkers", desc: "Practical cases, Philosophical thinkers", status: "not-started" },
+                        { name: "Public service ethics", desc: "Ethics specific to public service", status: "not-started" }
+                    ]
+                }
+            }
+        };
+
+        // Load data from localStorage or initialize
+        let progressData = JSON.parse(localStorage.getItem('uppcsProgress')) || JSON.parse(JSON.stringify(examData));
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTopics();
+            updateProgress();
+            updateLastUpdated();
+            
+            // Add event listener to reset button
+            document.getElementById('resetBtn').addEventListener('click', resetProgress);
+        });
+        
+        // Render all topics
+        function renderTopics() {
+            // Part 1: Prelims
+            const part1List = document.getElementById('part1List');
+            part1List.innerHTML = '';
+            
+            // Add Prelims topics
+            const prelimsTitle = document.createElement('li');
+            prelimsTitle.className = 'topic-item';
+            prelimsTitle.style.cursor = 'default';
+            prelimsTitle.style.padding = '10px 0';
+            prelimsTitle.style.backgroundColor = 'transparent';
+            prelimsTitle.innerHTML = `<div class="topic-name" style="font-weight:bold; color:var(--primary); font-size:1.2rem; width:100%;">${progressData.prelims.title}</div>`;
+            part1List.appendChild(prelimsTitle);
+            
+            progressData.prelims.topics.forEach((topic, index) => {
+                const topicItem = createTopicElement('prelims', index, topic);
+                part1List.appendChild(topicItem);
+            });
+            
+            // Add divider
+            const divider1 = document.createElement('div');
+            divider1.className = 'section-divider';
+            part1List.appendChild(divider1);
+            
+            // Add CSAT topics
+            const csatTitle = document.createElement('li');
+            csatTitle.className = 'topic-item';
+            csatTitle.style.cursor = 'default';
+            csatTitle.style.padding = '10px 0';
+            csatTitle.style.backgroundColor = 'transparent';
+            csatTitle.innerHTML = `<div class="topic-name" style="font-weight:bold; color:var(--secondary); font-size:1.2rem; width:100%;">${progressData.csat.title}</div>`;
+            part1List.appendChild(csatTitle);
+            
+            progressData.csat.topics.forEach((topic, index) => {
+                const topicItem = createTopicElement('csat', index, topic);
+                part1List.appendChild(topicItem);
+            });
+            
+            // Part 2: Mains
+            const part2List = document.getElementById('part2List');
+            part2List.innerHTML = '';
+            
+            // Add all mains sections
+            const mainsSections = ['compulsory', 'gs1', 'gs2', 'gs3', 'gs4'];
+            const mainsColors = {
+                'compulsory': 'var(--warning)',
+                'gs1': 'var(--primary)',
+                'gs2': 'var(--secondary)',
+                'gs3': 'var(--success)',
+                'gs4': 'var(--danger)'
+            };
+            
+            mainsSections.forEach((section, sectionIndex) => {
+                const sectionTitle = document.createElement('li');
+                sectionTitle.className = 'topic-item';
+                sectionTitle.style.cursor = 'default';
+                sectionTitle.style.padding = '10px 0';
+                sectionTitle.style.backgroundColor = 'transparent';
+                sectionTitle.style.marginTop = sectionIndex > 0 ? '15px' : '0';
+                sectionTitle.innerHTML = `<div class="topic-name" style="font-weight:bold; color:${mainsColors[section]}; font-size:1.2rem; width:100%;">${progressData.mains[section].title}</div>`;
+                part2List.appendChild(sectionTitle);
+                
+                progressData.mains[section].topics.forEach((topic, index) => {
+                    const topicItem = createTopicElement(`mains.${section}`, index, topic);
+                    part2List.appendChild(topicItem);
+                });
+                
+                // Add divider between sections except after last one
+                if (sectionIndex < mainsSections.length - 1) {
+                    const divider = document.createElement('div');
+                    divider.className = 'section-divider';
+                    part2List.appendChild(divider);
+                }
+            });
+        }
+        
+        // Create a topic element with checkbox
+        function createTopicElement(section, index, topic) {
+            const li = document.createElement('li');
+            li.className = 'topic-item';
+            li.dataset.section = section;
+            li.dataset.index = index;
+            
+            const isChecked = getTopicStatus(section, index) === 'completed';
+            
+            li.innerHTML = `
+                <div class="checkbox-container">
+                    <input type="checkbox" ${isChecked ? 'checked' : ''} id="checkbox-${section}-${index}">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="topic-content">
+                    <div class="topic-name">${topic.name}</div>
+                    <div class="topic-desc">${topic.desc}</div>
+                </div>
+                <div class="topic-status ${getTopicStatus(section, index)}">${getStatusText(getTopicStatus(section, index))}</div>
+            `;
+            
+            // Make entire list item clickable
+            li.addEventListener('click', function(e) {
+                // Don't trigger if clicking on checkbox directly
+                if (e.target.tagName === 'INPUT' || e.target.classList.contains('checkbox-container')) {
+                    return;
+                }
+                
+                const checkbox = this.querySelector('input');
+                checkbox.checked = !checkbox.checked;
+                updateTopicStatus(this.dataset.section, parseInt(this.dataset.index), checkbox.checked);
+                updateProgress();
+                updateLastUpdated();
+            });
+            
+            // Also add event listener to checkbox itself
+            const checkbox = li.querySelector('input');
+            checkbox.addEventListener('change', function() {
+                const li = this.closest('.topic-item');
+                updateTopicStatus(li.dataset.section, parseInt(li.dataset.index), this.checked);
+                updateProgress();
+                updateLastUpdated();
+            });
+            
+            return li;
+        }
+        
+        // Get current status of a topic
+        function getTopicStatus(section, index) {
+            if (section.includes('.')) {
+                const [main, sub] = section.split('.');
+                return progressData.mains[sub].topics[index].status;
+            } else {
+                return progressData[section].topics[index].status;
+            }
+        }
+        
+        // Get status text
+        function getStatusText(status) {
+            return status === 'completed' ? 'Completed' : 
+                   status === 'in-progress' ? 'In Progress' : 'Not Started';
+        }
+        
+        // Update topic status
+        function updateTopicStatus(section, index, isChecked) {
+            let target;
+            
+            if (section.includes('.')) {
+                const [main, sub] = section.split('.');
+                target = progressData.mains[sub].topics[index];
+            } else {
+                target = progressData[section].topics[index];
+            }
+            
+            target.status = isChecked ? 'completed' : 'not-started';
+            
+            // Update the status display immediately
+            const topicItem = document.querySelector(`.topic-item[data-section="${section}"][data-index="${index}"]`);
+            if (topicItem) {
+                const statusDiv = topicItem.querySelector('.topic-status');
+                statusDiv.className = `topic-status ${target.status}`;
+                statusDiv.textContent = getStatusText(target.status);
+                
+                // Update checkbox visual
+                const checkbox = topicItem.querySelector('input');
+                checkbox.checked = isChecked;
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('uppcsProgress', JSON.stringify(progressData));
+        }
+        
+        // Update overall progress
+        function updateProgress() {
+            let totalTopics = 0;
+            let completedTopics = 0;
+            
+            // Count prelims topics
+            totalTopics += progressData.prelims.topics.length;
+            completedTopics += progressData.prelims.topics.filter(t => t.status === 'completed').length;
+            
+            // Count csat topics
+            totalTopics += progressData.csat.topics.length;
+            completedTopics += progressData.csat.topics.filter(t => t.status === 'completed').length;
+            
+            // Count mains topics
+            const mainsSections = ['compulsory', 'gs1', 'gs2', 'gs3', 'gs4'];
+            let mainsTotal = 0;
+            let mainsCompleted = 0;
+            
+            mainsSections.forEach(section => {
+                mainsTotal += progressData.mains[section].topics.length;
+                mainsCompleted += progressData.mains[section].topics.filter(t => t.status === 'completed').length;
+            });
+            
+            totalTopics += mainsTotal;
+            completedTopics += mainsCompleted;
+            
+            // Calculate percentages
+            const overallPercentage = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
+            
+            // Calculate part 1 percentage (prelims + csat)
+            const part1Total = progressData.prelims.topics.length + progressData.csat.topics.length;
+            const part1Completed = progressData.prelims.topics.filter(t => t.status === 'completed').length + 
+                                  progressData.csat.topics.filter(t => t.status === 'completed').length;
+            const part1Percentage = part1Total > 0 ? Math.round((part1Completed / part1Total) * 100) : 0;
+            
+            // Calculate part 2 percentage (mains)
+            const part2Percentage = mainsTotal > 0 ? Math.round((mainsCompleted / mainsTotal) * 100) : 0;
+            
+            // Update UI
+            document.getElementById('overallPercentage').textContent = `${overallPercentage}%`;
+            document.getElementById('part1Percentage').textContent = `${part1Percentage}%`;
+            document.getElementById('part2Percentage').textContent = `${part2Percentage}%`;
+            
+            document.getElementById('progressFill').style.width = `${overallPercentage}%`;
+            
+            document.getElementById('totalTopics').textContent = totalTopics;
+            document.getElementById('completedTopics').textContent = completedTopics;
+            document.getElementById('remainingTopics').textContent = totalTopics - completedTopics;
+            
+            // Update counters
+            document.getElementById('prelimsCounter').textContent = `${part1Completed}/${part1Total}`;
+            document.getElementById('mainsCounter').textContent = `${mainsCompleted}/${mainsTotal}`;
+            
+            // Show completion message if all topics are completed
+            const completionMessage = document.getElementById('completionMessage');
+            if (completedTopics === totalTopics && totalTopics > 0) {
+                completionMessage.classList.add('show');
+            } else {
+                completionMessage.classList.remove('show');
+            }
+        }
+        
+        // Update last updated time
+        function updateLastUpdated() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdated').textContent = `Today at ${timeString}`;
+        }
+        
+        // Reset all progress
+        function resetProgress() {
+            if (confirm("Are you sure you want to reset all progress? This cannot be undone.")) {
+                progressData = JSON.parse(JSON.stringify(examData));
+                localStorage.removeItem('uppcsProgress');
+                renderTopics();
+                updateProgress();
+                updateLastUpdated();
+                
+                // Show confirmation
+                alert("All progress has been reset successfully!");
+            }
+        }
+    </script>
+</body>
+</html>
