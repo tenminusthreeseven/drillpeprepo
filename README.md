@@ -1,0 +1,3 @@
+DrillPep 🧠📊
+
+DrillPep is a smart web-based progress tracker designed for competitive exam aspirants. It helps you calculate, visualize, and analyze how much of your syllabus you have studied, making preparation more structured and goal-oriented. Built using HTML, CSS, and JavaScript for the frontend and Node.js for the backend, DrillPep offers a simple yet effective way to track daily study progress, monitor consistency, and stay motivated. Whether you are preparing for government exams, entrance tests, or certifications, DrillPep turns your preparation into measurable progress and helps you study smarter, not harder.
